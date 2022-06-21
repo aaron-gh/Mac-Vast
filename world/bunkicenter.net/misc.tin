@@ -25,5 +25,6 @@
     #action {[Type a line of input, cancel with '@abort' or 'A']} {vplay misc/prompt.ogg}
     #action {[Enter "yes" or "no"]} {vplay misc/prompt.ogg}
     #action {>> Command Aborted <<} {vplay misc/abort.ogg}
+    #action {Invalid selection.} {vplay misc/abort.ogg}
 
 #class {misc} close
