@@ -1,0 +1,213 @@
+#NOP config options
+
+#config {repeat enter} {on}
+#CONFIG {packet patch} {1}
+#CONFIG {command echo} {off}
+#FORMAT {session[ScreenRows]} {%R}
+#FORMAT {session[ScreenCols]} {%C}
+#config {connect retry} {30}
+#split
+
+
+#alias {log}
+{
+	#if {"%0" == "on"}
+	{
+		#if {"$logging" != "on"}
+		{
+			#format {logfile} {$worldname %t.txt} {%Y-%m-%d};
+			#log append vast/logs/$logfile;
+			#var logging on
+		};
+		#else
+		{
+			#showme You are already logging.
+		}
+	};
+	#elseif {"%0" == "off"}
+	{
+		#if {"$logging" == "on"}
+		{
+			#log off;
+			#var logging off
+		};
+		#else
+		{
+			#showme You are not logging.
+		}
+	};
+	#else
+	{
+		#showme Turn logging on or off?
+	}
+}
+
+#NOP Maths and sound aliases
+#alias {play %0.%1}
+{
+#system play -v $vol vast/sounds/"%0.%1" -q 2>/dev/null &;
+#gag {^[[0m#OK: EXECUTING %0}
+}
+#alias {{vol|volume} %1}
+{
+#variable {vol} {%1};
+	#showme {Sound volume now at %1.}
+}
+#macro {\e[20~}
+{
+	#showme {Sound volume is at $vol\.}
+}
+#macro {\e[23~}
+{
+#math {vol} {$vol - .05};
+play luaaudio/down.mp3;#showme {Sound volume now at $vol\.}
+}
+#macro {\e[24~}
+{
+#math {vol} {$vol + .05};
+	play luaaudio/up.mp3;#showme {Sound volume now at $vol\.}
+}
+#macro {\e[21~}
+{
+#if {"$vol" != "0"}
+{
+play luaaudio/off.mp3;#variable {oldvol} {$vol};
+#variable {vol} {0};
+#showme {Your soundpack has been muted.}
+};
+#elseif {"$vol" == "0"}
+{
+#variable {vol} {$oldvol};
+play luaaudio/on.mp3;#showme {Your soundpack has been unmuted. Sound volume now at $vol\.}
+}
+}
+#alias {vol?} 
+{
+play luaaudio/up.ogg;
+#showme {Your volume is $vol\.}
+}
+#function {math}
+{
+    #math result {%0}
+}
+
+#function {intmath}
+{
+#NOP #math returns floats, even if it doesn't need to. I.E. 12.00;
+#math result %0;
+#format {result} {%d} {%1}
+}
+
+#function {int} {#format {result} {%d} {%1}}
+#sub {#OK:   %1 %2 LOADED.} {loading %1 %2}
+#gag {^$}
+#action {^#SESSION '%1' ACTIVATED.} {#system say %1;#buffer end;#line gag}
+
+#nop This script provides three aliasses that allow you to maintain a list of muds as well as autologin capabilities. With addworld <world> <host> <port> [<character> [password]] you can add a world to the list. With deleteworld <world> you can remove a world from the list. With connect <world> you'll connect to a world, if a character name and password has been given a character will automagically be logged in as well. The worlds are automatically saved to worlddata.tin and will be loaded when the script itself is read.
+
+#class worlddata read vast/world/worlddata.tin
+
+#if {&{worldlist} == 0}
+{
+	#class worlddata open;
+	#list worldlist clr;
+	#class worlddata close
+}
+
+#alias {addworld}
+{
+	#if {"%3" == ""}
+	{
+		#showme Syntax: addworld <name> <host> <port> [character name] [password]
+	};
+	#else
+	{
+		#var worldlist[%1][name] %1;
+		#var worldlist[%1][host] %2;
+		#var worldlist[%1][port] %3;
+		#if {"%4" != ""}
+		{
+			#var worldlist[%1][char] %4
+		};
+		#if {"%5" != ""}
+		{
+			#var worldlist[%1][pass] %5
+		};
+		#if {&worldlist[%1][char]}
+		{
+			#system mkdir vast/world/%2;
+#class %2 write vast/world/%2/%2.tin;
+#class %1 write vast/world/%2/%1.tin;
+#showme The world %1 (%2 %3) and the character %4 (%5) has been added.
+		};
+		#else
+		{
+#system mkdir vast/world/%2;
+#class %2 write vast/world/%2/%2.tin;
+#class %1 write vast/world/%2/%1.tin;
+#showme The world %1 (%2 %3) has been added.
+		};
+		#class worlddata write vast/world/worlddata.tin
+	}
+}
+
+#alias {deleteworld}
+{
+	#if {&worldlist[%1] != 0}
+	{
+		#unvar worldlist[%1];
+		#class worlddata write vast/world/worlddata.tin;
+		#system rm -rf vast/world/%1*;
+#showme The world %1 has been deleted.
+	};
+	#else
+	{
+		#showme The world %1 couldn't be found.
+	}
+}
+
+#alias {connect}
+{
+	#if {"%1" == ""}
+	{
+		#echo {%h} {{ WORLD LIST }};
+
+		#foreach {$worldlist[]} {world}
+		{
+			#echo {%-20s %s %s %s} {$worldlist[$world][name]} {$worldlist[$world][host]} {$worldlist[$world][port]} {$worldlist[$world][char]}
+		}
+	};
+	#elseif {&worldlist[%1] != 0}
+	{
+		#ses $worldlist[%1][name] $worldlist[%1][host] $worldlist[%1][port];
+
+		#if {$worldlist[%1][char]}
+		{
+			#$worldlist[%1][name] $worldlist[%1][char];
+
+			#if {$worldlist[%1][pass]}
+			{
+				#$worldlist[%1][name] $worldlist[%1][pass]
+			}
+		}
+	};
+	#else
+	{
+		#showme Couldn't find world %1.
+	}
+}
+#action {%1 '%2' CONNECTED TO '%3' PORT '%4'} {
+#variable {worldname} {%2};
+#variable {worldurl} {%3};
+#variable {worldport} {%4};
+#class %3 read vast/world/$worldurl/%3.tin;
+#class %2 read vast/world/$worldurl/%2.tin;
+log on
+}
+}
+#event {SESSION CONNECTED} 
+{
+#read {vast/world/variables.tin
+}
+#macro {\e[31~} {#ses +}
+#macro {\e[29~} {#ses -}
