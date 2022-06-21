@@ -1,0 +1,23 @@
+#class {airlock} open
+
+    #action {A chime indicates that someone has entered the airlock.} {
+        vplay ship/airlock/chime.ogg;
+        #showme {Airlock chime.};
+        #line gag
+    }
+    #action {A light flashes on the airlock %*} {vplay ship/airlock/lights.og}
+    #action {%* a magnetic strip on a key to a sensor on the hatch of %* and %* inside.} {vplay ship/airlock/enter.ogg}
+    #action {%* from the airlock %*.} {vplay ship/airlock/exit.ogg}
+    #action {A blue light flashes to life, as the airlock is sealed.} {vplay ship/airlock/sealed.ogg}
+    #action {Lights flash as the cycling process begins.} {
+        vplay ship/airlock/cycleStarted.ogg;
+        #showme {cycle started.};
+        #line gag
+    }
+#action {You hear a suction sound as the air is sucked from the airlock.} {vplay misc/airStart.ogg}
+    #action {The hissing comes to an end, as the airlock finishes depressurizing.} {vplay misc/airEnd.ogg}
+    #action {The blue light clicks off, and the * airlock hatch unlocks.} {vplay ship/airlock/sealed.ogg}
+    #action {The loud sound of hissing air floods into the room from four air hoses which hang from the corners of the walls, as the airlock pressurizes.} {vplay misc/airStart.ogg}
+    #action {Fans all around the walls clean your spacesuit with air, before shutting off and retracting back into the walls of the airlock.} {vplay misc/Airend.ogg}
+
+#class {airlock} close

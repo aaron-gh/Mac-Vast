@@ -8,11 +8,13 @@
     #nop connect/disconnect events
     #event {SESSION DISCONNECTED} {#class vastVariables write games/world/bunkicenter.net/vastVariables.tin}
     #event {SESSION CONNECTED} {
+        #read games/bunkicenter.net/airlock.tin;
         #read games/world/bunkicenter.net/communication.tin;
         #read games/world/bunkicenter.net/misc.tin;
         #class vastVariables read games/world/bunkicenter.net/vastVariables.tin}
     #alias {spreload} {
         #read games/world/bunkicenter.net/bunkicenter.net.tin;
+        #read games/bunkicenter.net/airlock.tin;
         #read games/world/bunkicenter.net/communication.tin;
         #read games/world/bunkicenter.net/misc.tin;
         #read games/world/bunkicenter.net/vastVariables.tin;

@@ -43,3 +43,31 @@
     }
 
 #class {shipComms }close
+
+#class {Phones} open
+
+    #action {You tap an icon labeled mute} {vplay communication/muted.ogg}
+    #action {You tap an icon labeled unmute.} {vplay communication/unmute.ogg}
+    #action {Message sent.} {vplay communication/messageSent.ogg}
+    #action {You hear your phone chime twice.} {vplay communication/messageReceived.ogg}
+    #action {You touch the end call icon, and a click can be heard over the line as the call ends.} {
+        vplay Communication/callEnd.ogg;
+        #showme {Call ended.};
+        #line gag
+    }
+    #action {Over the line, you hear a click sound, indicating that the call has been ended.} {
+        vplay Communication/callEnded.ogg;
+        #showme {Call ended.};
+    #line gag
+    }
+    #action {You hear 3 long buzzes before the line goes dead.} {vplay communication/phoneBusy.ogg}
+    #action {You hear your phone chime as it receives a new voicemail.} {vplay communications/voicemail.ogg}
+    #action {You hear a ringing sound on the line.} {vplay communication/ringOut.ogg}
+    #action {You hear your %* ringing.} {vplay communication/ringIn.ogg}
+    #action {A banner reads: "You have %1 of mail to be picked up."} {
+        vplay communication/newMail.ogg;
+        #showme {%1 of mail.};
+        #line gag
+    }
+
+#class {phones} close
