@@ -1,0 +1,28 @@
+#class {misc} open
+
+    #nop Uncatagorised
+    #action {You see a|an %* sign here.} {vplay misc/sign.ogg}
+    #action {(%1 second|seconds roundtime)} {#delay {play misc/roundtimeOver.ogg} {%1}}
+    #action {%1 news reader flashes, indicating that it has unread news in the %2 category.} {
+        vplay misc/newNews.ogg;
+        #showme {New news in %2};
+        #line gag
+    }
+    #action {People detector: Yes} {
+        vplay misc/beep10.ogg;
+        #line gag
+    }
+    #nop Contamination scanners
+    #action {A sensor begins to slowly scan you from head to toe.} {vplay misc/sensorScan.ogg}
+    #action {A nozzle extends, blasting you with air.} {vplay misc/airStart.ogg}
+
+    #nop Money money money!
+    #action {You receive %* dollars %*} {vplay misc/getMoney.ogg}
+    #action {A payment of %* dollars %*} {vplay misc/giveMoney.ogg}
+
+    #nop prompts
+    #action {[Type a line of input, cancel with '@abort' or 'A']} {vplay misc/prompt.ogg}
+    #action {[Enter "yes" or "no"]} {vplay misc/prompt.ogg}
+    #action {>> Command Aborted <<} {vplay misc/abort.ogg}
+
+#class {misc} close

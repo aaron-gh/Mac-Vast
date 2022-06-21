@@ -1,0 +1,19 @@
+#class {bunkicenter.net} open
+
+    #nop sound alias
+    #alias {vplay %1.%2} {
+        #system play -v $vol "games/sounds/vast/%1.%2" -q 2>/dev/null &;
+        #gag {^[[0m#OK: EXECUTING %0}}
+
+    #nop connect/disconnect events
+    #event {SESSION DISCONNECTED} {#class vastVariables write games/world/bunkicenter.net/vastVariables.tin}
+    #event {SESSION CONNECTED} {
+        #class misc read games/world/bunkicenter.net/misc.tin;
+        #class vastVariables read vastVariables games/world/bunkicenter.net/vastVariables.tin}
+    #alias {spreload} {
+        #read games/world/bunkicenter.net/bunkicenter.tin;
+        #read games/world/bunkicenter.net/vastVariables.tin;
+        #showme {Soundpack reloaded!}
+    }
+
+#class {bunkicenter.net} close
