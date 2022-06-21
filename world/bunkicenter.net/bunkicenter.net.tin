@@ -13,8 +13,9 @@
         #class vastVariables read games/world/bunkicenter.net/vastVariables.tin}
     #alias {spreload} {
         #read games/world/bunkicenter.net/bunkicenter.net.tin;
-        #read games/world/bunkicenter.net/vastVariables.tin;
+        #read games/world/bunkicenter.net/communication.tin;
         #read games/world/bunkicenter.net/misc.tin;
+        #read games/world/bunkicenter.net/vastVariables.tin;
         #showme {Soundpack reloaded!}
     }
 

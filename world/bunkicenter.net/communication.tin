@@ -9,7 +9,37 @@
 
     #action {A speaker crackles to life and announces, "Incoming broadcast detected."} {
         vplay Communication/radio.ogg;
-        #showme {Incoming broadcast.}
+        #showme {Incoming broadcast.};
+        #line gag
+    }
+    #action {You pick up a microphone and say into the intercom, %1} {
+        #showme {[pa] %1};
+        #line gag
+    }
+    #action {You hear %1's voice over the intercom, %2} {
+        #showme {[pa] %1, %2};
+        #line gag
+    }
+    #action {%1 %2 over the intercom.} {
+        #showme {[pa] %1 %2};
+        #line gag
+    }
+    #action {A voice comes over the starship's speaker and says, "%1"} {
+        vplay Communication/radio.ogg;
+        #showme {%1};
+        #line gag
+    }
+    #action {The SRC panel flashes: New message from %1} {
+        #showme {[SRC] %1};
+        #line gag
+    }
+    #action {You type out %1, on the SRC panel, and hit send.} {
+        #showme {[SRC] %1};
+        #line gag
+    }
+    #action {%1 types out a message on the SRC panel and hits send. The panel displays, %2} {
+        #showme {[SRC] %1, %2};
+        #line gag
     }
 
 #class {shipComms }close
