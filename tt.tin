@@ -16,7 +16,7 @@
 		#if {"$logging" != "on"}
 		{
 			#format {logfile} {$worldname %t.txt} {%Y-%m-%d};
-			#log append vast/logs/$logfile;
+			#log append games/logs/$logfile;
 			#var logging on
 		};
 		#else
@@ -45,7 +45,7 @@
 #NOP Maths and sound aliases
 #alias {play %0.%1}
 {
-#system play -v $vol vast/sounds/"%0.%1" -q 2>/dev/null &;
+#system play -v $vol games/sounds/"%0.%1" -q 2>/dev/null &;
 #gag {^[[0m#OK: EXECUTING %0}
 }
 #alias {{vol|volume} %1}
@@ -105,7 +105,7 @@ play luaaudio/up.ogg;
 
 #nop This script provides three aliasses that allow you to maintain a list of muds as well as autologin capabilities. With addworld <world> <host> <port> [<character> [password]] you can add a world to the list. With deleteworld <world> you can remove a world from the list. With connect <world> you'll connect to a world, if a character name and password has been given a character will automagically be logged in as well. The worlds are automatically saved to worlddata.tin and will be loaded when the script itself is read.
 
-#class worlddata read vast/world/worlddata.tin
+#class worlddata read games/world/worlddata.tin
 
 #if {&{worldlist} == 0}
 {
@@ -135,19 +135,19 @@ play luaaudio/up.ogg;
 		};
 		#if {&worldlist[%1][char]}
 		{
-			#system mkdir vast/world/%2;
-#class %2 write vast/world/%2/%2.tin;
-#class %1 write vast/world/%2/%1.tin;
+			#system mkdir games/world/%2;
+#class %2 write games/world/%2/%2.tin;
+#class %1 write games/world/%2/%1.tin;
 #showme The world %1 (%2 %3) and the character %4 (%5) has been added.
 		};
 		#else
 		{
-#system mkdir vast/world/%2;
-#class %2 write vast/world/%2/%2.tin;
-#class %1 write vast/world/%2/%1.tin;
+#system mkdir games/world/%2;
+#class %2 write games/world/%2/%2.tin;
+#class %1 write games/world/%2/%1.tin;
 #showme The world %1 (%2 %3) has been added.
 		};
-		#class worlddata write vast/world/worlddata.tin
+		#class worlddata write games/world/worlddata.tin
 	}
 }
 
@@ -156,8 +156,8 @@ play luaaudio/up.ogg;
 	#if {&worldlist[%1] != 0}
 	{
 		#unvar worldlist[%1];
-		#class worlddata write vast/world/worlddata.tin;
-		#system rm -rf vast/world/%1*;
+		#class worlddata write games/world/worlddata.tin;
+		#system rm -rf games/world/%1*;
 #showme The world %1 has been deleted.
 	};
 	#else
@@ -200,14 +200,14 @@ play luaaudio/up.ogg;
 #variable {worldname} {%2};
 #variable {worldurl} {%3};
 #variable {worldport} {%4};
-#class %3 read vast/world/$worldurl/%3.tin;
-#class %2 read vast/world/$worldurl/%2.tin;
+#class %3 read games/world/$worldurl/%3.tin;
+#class %2 read games/world/$worldurl/%2.tin;
 log on
 }
 }
 #event {SESSION CONNECTED} 
 {
-#read {vast/world/variables.tin
+#read {games/world/variables.tin
 }
 #macro {\e[31~} {#ses +}
 #macro {\e[29~} {#ses -}

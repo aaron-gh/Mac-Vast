@@ -1,0 +1,5 @@
+#CLASS {worlddata} OPEN
+
+#VARIABLE         {worldlist}  {{VastHorizon}{{host}{bunkicenter.net}{name}{VastHorizon}{port}{7979}}}
+
+#CLASS {worlddata} CLOSE
