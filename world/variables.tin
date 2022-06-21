@@ -2,10 +2,10 @@
 
 #EVENT {SESSION DEACTIVATED}
 {
-	#class {variables} {write} {games/world/Variables.tin}
+    #class {variables} {write} {games/world/Variables.tin}
 }
 
-#VARIABLE         {logfile}  {}
-#VARIABLE         {vol}  {0.35}
+#VARIABLE {logfile} {vast 2022-06-21.txt}
+#VARIABLE {vol} {0.35}
 
 #CLASS {variables} CLOSE

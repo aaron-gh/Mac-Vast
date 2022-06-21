@@ -1,6 +1,6 @@
 #class {misc} open
 
-    #nop Uncatagorised
+    #nop Uncategorised
     #action {You see a|an %* sign here.} {vplay misc/sign.ogg}
     #action {(%1 second|seconds roundtime)} {#delay {play misc/roundtimeOver.ogg} {%1}}
     #action {%1 news reader flashes, indicating that it has unread news in the %2 category.} {
@@ -15,6 +15,7 @@
     #nop Contamination scanners
     #action {A sensor begins to slowly scan you from head to toe.} {vplay misc/sensorScan.ogg}
     #action {A nozzle extends, blasting you with air.} {vplay misc/airStart.ogg}
+    #action {If you have not created an account with us} {vplay misc/prompt.ogg}
 
     #nop Money money money!
     #action {You receive %* dollars %*} {vplay misc/getMoney.ogg}

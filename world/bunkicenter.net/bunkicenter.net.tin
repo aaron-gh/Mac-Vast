@@ -8,10 +8,10 @@
     #nop connect/disconnect events
     #event {SESSION DISCONNECTED} {#class vastVariables write games/world/bunkicenter.net/vastVariables.tin}
     #event {SESSION CONNECTED} {
-        #class misc read games/world/bunkicenter.net/misc.tin;
-        #class vastVariables read vastVariables games/world/bunkicenter.net/vastVariables.tin}
+        #read games/world/bunkicenter.net/misc.tin;
+        #class vastVariables read games/world/bunkicenter.net/vastVariables.tin}
     #alias {spreload} {
-        #read games/world/bunkicenter.net/bunkicenter.tin;
+        #read games/world/bunkicenter.net/bunkicenter.net.tin;
         #read games/world/bunkicenter.net/vastVariables.tin;
         #showme {Soundpack reloaded!}
     }
