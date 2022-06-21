@@ -2,7 +2,7 @@
 
     #nop Uncategorised
     #action {If you have not created an account with us} {vplay misc/prompt.ogg};
-    #action {You see a|an %* sign here.} {vplay misc/sign.ogg};
+    #action {You see %* sign here.} {vplay misc/sign.ogg};
     #action {%1 news reader flashes, indicating that it has unread news in the %2 category.} {
         vplay misc/newNews.ogg;
         #showme {New news in %2};
@@ -13,6 +13,7 @@
         #line gag;
     }
     #action {(%1 seconds roundtime.)} {#delay {%1} {vplay misc/roundtimeOver.ogg}}
+
     #nop Contamination scanners
     #action {A sensor begins to slowly scan you from head to toe.} {vplay misc/sensorScan.ogg}
     #action {A nozzle extends, blasting you with air.} {vplay misc/airStart.ogg}
