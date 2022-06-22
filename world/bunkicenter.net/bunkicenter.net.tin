@@ -11,6 +11,7 @@
         #read games/world/bunkicenter.net/airlock.tin;
         #read games/world/bunkicenter.net/communication.tin;
         #read games/world/bunkicenter.net/misc.tin;
+        #read games/world/bunkicenter.net/shipMisc.tin;
         #read games/world/bunkicenter.net/shipMove.tin;
         #class vastVariables read games/world/bunkicenter.net/vastVariables.tin}
     #alias {spreload} {
@@ -18,6 +19,7 @@
         #read games/world/bunkicenter.net/airlock.tin;
         #read games/world/bunkicenter.net/communication.tin;
         #read games/world/bunkicenter.net/misc.tin;
+        #read games/world/bunkicenter.net/shipMisc.tin;
         #read games/world/bunkicenter.net/shipMove.tin;
         #read games/world/bunkicenter.net/vastVariables.tin;
         #showme {Soundpack reloaded!}

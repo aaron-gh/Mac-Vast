@@ -2,11 +2,11 @@
 
     #action {%* tap%* request button on the keyboard.} {vplay ship/move/request.ogg}
     #action {The engine's sound increases as the starship begins acceleration.} {
-        vplay ship/movement/accelerate.ogg;
+        vplay ship/move/accelerate.ogg;
         #line gag
     }
     #action {The engine's sound decreases as the starship comes to a stop.} {
-        vplay ship/movement/decelerate.ogg;
+        vplay ship/move/decelerate.ogg;
         #line gag
     }
     #action {The ship traverses into the next sector.} {
@@ -45,7 +45,7 @@
         #line gag
     }
     #action {The shaking comes to a stop as the shuttle drive shuts down.} {
-        vplay ship/misc/shuttleStop.ogg;
+        vplay ship/misc/shuttleEnd.ogg;
         #line gag
     }
 
