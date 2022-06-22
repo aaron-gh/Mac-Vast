@@ -1,7 +1,7 @@
 #class {channels} open
 
     #nop an experemental way of handling channels. This may not work.
-    #action {[%1] %2} {vplay Communication/%1.ogg}
+    #action {[%1]%2} {vplay Communication/%1.ogg}
 
 #class {channels} close
 
@@ -38,7 +38,7 @@
         #line gag
     }
     #action {%1 types out a message on the SRC panel and hits send. The panel displays, %2} {
-        #showme {[SRC] %1, %2};
+        #showme {[SRC] %1  sends %2};
         #line gag
     }
 

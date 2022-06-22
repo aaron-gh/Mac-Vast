@@ -11,6 +11,7 @@
         #read games/world/bunkicenter.net/airlock.tin;
         #read games/world/bunkicenter.net/communication.tin;
         #read games/world/bunkicenter.net/misc.tin;
+        #read games/world/bunkicenter.net/shipMove.tin;
         #class vastVariables read games/world/bunkicenter.net/vastVariables.tin}
     #alias {spreload} {
         #read games/world/bunkicenter.net/bunkicenter.net.tin;
