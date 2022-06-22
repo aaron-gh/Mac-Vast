@@ -1,11 +1,20 @@
 #class {shipEngines} open
 
+    #action {%* tap%* request button on the keyboard.} {vplay ship/move/request.ogg}
     #action {The engine's sound increases as the starship begins acceleration.} {
         vplay ship/movement/accelerate.ogg;
         #line gag
     }
     #action {The engine's sound decreases as the starship comes to a stop.} {
         vplay ship/movement/decelerate.ogg;
+        #line gag
+    }
+    #action {The ship traverses into the next sector.} {
+        vsplay ship/move/switchSector.ogg;
+        #line gag
+    }
+    #action {That space is occupied.} {
+        vplay ship/move/occupied.ogg;
         #line gag
     }
     #action {The ship begins to vibrate as it accelerates towards %*} {
@@ -17,7 +26,7 @@
         #show {Landed.};
         #line gag
     }
-    #action The sound of the engine increases as you are propelled toward space.} {
+    #action {The sound of the engine increases as you are propelled toward space.} {
         vplay ship/move/youLaunching.ogg;
         #line gag
     }

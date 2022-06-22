@@ -1,0 +1,24 @@
+# class {shipPower} open
+
+    #action {The hum of the starship's engine goes quiet as the ship powers down, and the minimal life support generator hums to life.} {vplayship/misc/poweroff.ogg}
+    #action {n engine roars to life as %* powers up.} {vplay ship/misc/otherOn.ogg}
+    #action {The * falls silent as it powers down.} {vplay ship/misc/otherOff.ogg}
+    #action {You hear a low hum as the starship powers up, and the minimal life support generator shuts down.} {vplay ship/misc/powerOn}
+    #action {%* push%* a button on the keyboard.} {ship/misc/button.ogg}
+
+#class {shipPower} close
+
+#class {shipMisc} open
+
+    #action {You push %1 up to a pulley system on the hull of %2, and %* is lifted into the ship's storage room.} {
+        vplay ship/misc/load.ogg;
+        #showme {%1 loaded in %2.};
+        #line gag
+    }
+    #action {You flick a switch on %1 and %2 is slowly unloaded from the ship's storage room, and lowered to the ground by a pulley system on the hull of the ship.} {
+        vplay ship/misc/unload.ogg;
+        #showme {%1 unloaded from %2.};
+        #line gag
+    }
+
+#class {shipMisc} close
