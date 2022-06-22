@@ -1,7 +1,16 @@
 #class {misc} open
 
     #nop Uncategorised
-    #action {If you have not created an account with us} {vplay misc/prompt.ogg};
+    #action {If you have not created an account with us} {
+        vplay misc/prompt.ogg;
+        #if {$devMode} {
+            #debug actions;
+            #debug alias;
+            #debug gag;
+            #showme {Developer mode is on!!! do not use this for game play!!!}
+        }
+    }
+
     #action {You see %* sign here.} {vplay misc/sign.ogg};
     #action {%1 news reader flashes, indicating that it has unread news in the %2 category.} {
         vplay misc/newNews.ogg;
@@ -9,7 +18,7 @@
         #line gag;
     }
     #action {People detector: Yes} {
-        vplay misc/beep10.ogg;
+        vplay misc/people.ogg;
         #line gag;
     }
     #action {(%1 seconds roundtime.)} {#delay {%1} {vplay misc/roundtimeOver.ogg}}
@@ -24,6 +33,7 @@
 
     #nop prompts
     #action {[Type a line of input, cancel with '@abort' or 'A']} {vplay misc/prompt.ogg}
+   #action {[Type 0 to exit, cancel with '@abort' or '} {vplay misc/prompt.ogg}
     #action {[Enter "yes" or "no"]} {vplay misc/prompt.ogg}
     #action {>> Command Aborted <<} {vplay misc/abort.ogg}
     #action {Invalid selection.} {vplay misc/abort.ogg}

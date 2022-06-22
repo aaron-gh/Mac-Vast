@@ -1,5 +1,6 @@
 #CLASS {vastVariables} OPEN
 
+#VARIABLE {devMode} {1}
 #VARIABLE {rtime} {1}
 
 #CLASS {vastVariables} CLOSE
