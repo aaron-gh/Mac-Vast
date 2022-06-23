@@ -71,3 +71,9 @@
     }
 
 #class {phones} close
+
+#class {staff} open
+
+    #action {Critical. The staff have opened a new support with you. Please type SUPPORT to view.} {vplay communication/support.ogg}
+
+#class {staff} close

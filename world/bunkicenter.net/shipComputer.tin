@@ -1,0 +1,29 @@
+#class {shipComputer} open
+
+    #action {The computer announces, "%1"} {
+        vplay ship/computer/announce.ogg;
+        #show {%1};
+        #line gag
+    }
+    #action {%* announces, "%1 "%2"%3"} {
+        vplay ship/computer/announce.ogg;
+        #show {%1 "%2"%3};
+        #line gag
+    }
+
+#class {shipComputer} close
+
+#class {shipStatus} open
+
+    #action {Cargo hold contents:} {
+        vplay ship/computer/display.ogg;
+        #line gag
+    }
+    #action {You examine the starship's damage report.} {
+        vplay ship/computer/display.ogg;
+        #line gag
+    }
+    #action {Generating a systems report...} {
+      vplay ship/computer/display.ogg;
+      #line gag
+    }

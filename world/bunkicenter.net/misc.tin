@@ -10,7 +10,7 @@
             #showme {Developer mode is on!!! do not use this for game play!!!}
         }
     }
-
+    #action {------------------------------------------------------------------------------} {#line gag}
     #action {You see %* sign here.} {vplay misc/sign.ogg};
     #action {%1 news reader flashes, indicating that it has unread news in the %2 category.} {
         vplay misc/newNews.ogg;
