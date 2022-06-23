@@ -4,6 +4,7 @@
     #action {[%1] %2 "%3"} {vplay Communication/%1.ogg}
     #action {[%1] %2: %*} {vplay communication/%1.ogg}
     #action {^[%1] %2 %3s} {vplay communication/%1.ogg}
+
 #class {channels} close
 
 #class {shipComms} open
