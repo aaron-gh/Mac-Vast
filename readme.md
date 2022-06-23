@@ -55,6 +55,10 @@ Now, make a copy of the file called "custom.tin" and name it "vast.tin"
 
 cp ~/games/world/bunkicenter.net/custom.tin ~/games/world/bunkicenter.net/vast.tin
 
+Make the logs directory:
+
+mkdir ~/games/logs
+
 All done, the pack is now installed.
 
 To start the pack, from your home directory in terminal, type:
@@ -89,6 +93,10 @@ cp -r <repository-path> ~/games
 
 Rename "games/world/bunkicenter.net/custom.tin". to "vast.tin"
 
+Make the logs directory:
+
+mkdir ~/games/logs
+
 All done, the pack is now installed.
 
 To start the pack, from your home directory in terminal, type:
@@ -118,7 +126,7 @@ I have provided several aliases and macros in this pack to allow for reloading, 
 * F9: Check sound volume.
 * F10: mute/unmute toggle for all sounds.
 * F11: turn volume down. Please do not go below 0.0 (I haven't implemented a limit on this yet.)
-* f12: Raise volume (Please don't go about 2.0, again, not limit yet.)
+* f12: Raise volume (Please don't go about 2.0, again, not limit yeted.)
 
 # 4 Credits
 
@@ -131,6 +139,6 @@ Thank you to the rest of the Bunkicenter staff, for putting up with my constant 
 
 # 5 Reporting issues
 
-There are mutliple ways to report issues. Either via the "report" command in game, or though Github. The use of Github is preferd, as game reports should really only be used for game issues, not for issues with the soundpack, however you may use it if you wish.
+There are multipleways to report issues. Either via the "report" command in game, or through Github. The use of Github is preferd, as game reports should really only be used for game issues, not for issues with the soundpack, however you may use it if you wish.
 
 Once again, if you are using the "Dev" branch **only** report issues through github.
