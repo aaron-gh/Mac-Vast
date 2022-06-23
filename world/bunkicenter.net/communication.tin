@@ -13,8 +13,8 @@
         #showme {Incoming broadcast.};
         #line gag
     }
-    #action {You pick up a microphone and say into the intercom, %1} {
-        #showme {[pa] %1};
+    #action {You pick up the microphone and say, %1 into the intercom.} {
+        #showme {[pa] you, %1};
         #line gag
     }
     #action {You hear %1's voice over the intercom, %2} {
@@ -76,5 +76,9 @@
 #class {staff} open
 
     #action {Critical. The staff have opened a new support with you. Please type SUPPORT to view.} {vplay communication/support.ogg}
+    #action {^The staff have replied to your support.} {vplay communication/support.ogg}
+    #action {A staff member shouts %*} {vplay communication/shout.ogg}
+    #action {^announcement from the staff} {vplay communication/announcement.ogg}
+    #action {[game change]: %*} {vplay communication/change.ogg}
 
 #class {staff} close
