@@ -10,6 +10,7 @@
     #read games/world/bunkicenter.net/shipComputer.tin;
     #read games/world/bunkicenter.net/shipMisc.tin;
     #read games/world/bunkicenter.net/shipMove.tin;
+    #read games/world/bunkicenter.net/soundpackHook.tin;
     #read games/world/bunkicenter.net/vastVariables.tin;
     #showme {Soundpack reloaded!}
 }
@@ -24,11 +25,12 @@
 {
     #read games/world/bunkicenter.net/airlock.tin;
     #read games/world/bunkicenter.net/communication.tin;
+    #read games/world/bunkicenter.net/misc.tin;
     #read games/world/bunkicenter.net/shipCombat.tin;
     #read games/world/bunkicenter.net/shipComputer.tin;
-    #read games/world/bunkicenter.net/misc.tin;
     #read games/world/bunkicenter.net/shipMisc.tin;
     #read games/world/bunkicenter.net/shipMove.tin;
+    #read games/world/bunkicenter.net/soundpackhook.tin;
     #class vastVariables read games/world/bunkicenter.net/vastVariables.tin
 }
 
