@@ -1,0 +1,138 @@
+#class {shipWeapons} open
+
+    #action {A barrage of bullets burst from the ship as the %* fired.} {
+        Play ship/combat/rail.ogg;
+        #line gag
+    }
+    #action {A loud swooshing noise fills the ship as the phaser banks release a burst of energy.} {
+        vplay ship/combat/phaser.ogg;
+        #line gag
+    }
+    #action {A thunderous boom reverberates throughout the ship as %* released from the launcher%*.} {
+        vplay ship/combat/cannon.ogg;
+        #line gag
+    }
+    #action {The ship shudders violently as its * launched.} {
+        vplay ship/combat/torp.ogg;
+        #line gag
+    }
+    #action {The computer announces, "Releasing energy into %*."} {#gag line}
+
+#class {shipWeapons} close
+
+#class {shipCombat} open
+
+    #action {* is within one unit of this starship.} {
+        vplay ship/combat/range.ogg;
+        #line gag
+    }
+    #action {%* scored a hit on %1.} {
+        vplay ship/combat/hitOn.ogg;
+        #showme {Hit on %1};
+        #line gag
+    }
+    #action {%1 has a lock on this starship.} {
+        vplay ship/combat/lockedOnYou.ogg;
+        #showme {%1 locked on.};
+        #line gag
+    }
+    #action {This starship has been hit by %1.} {
+        vplay ship/combat/youHit.ogg;
+      #showme {Hit by %1.};
+        #line gag
+    }
+    #action {The sensor boards flash as %* fires a shock wave into the sector.} {vplay ship/combat/stunFire.ogg}
+    #action {%8"The starship has been immobilized for 40 seconds."} {
+        vplay ship/combat/stunned.ogg;
+        #showme {Ship stunned for 40 seconds.};
+        #line gag
+    }
+    #action {Firing on empty space complete.} {
+        vplay ship/combat/noTarget.ogg;
+        #showme {No target.};
+        #line gag
+    }
+    #action {%1 has been destroyed.} {
+        vplay ship/combat/targetDestroyed.ogg;
+        #show {%1 destroyed.};
+        #line gag
+    }
+
+#class {shipCombat} close
+
+#class {targeting} open
+
+    #sub {Target: %1, (%2).} {%2, %1.}
+    #action {Target lost.} {vplay ship/combat/targetLost.ogg}
+    #action {The computer is now targeting %1.} {
+        vplay ship/combat/targeting.ogg;
+        #showme {Targetign %1.};
+      #line gag
+    }
+    #action {There are no starships in range.} {vplay ship/combat/noRange.ogg}
+
+#class {targeting} close
+
+#class {lights} open
+
+    #action {The lights overhead suddenly flicker as they change from %1 to %2.} {vplay ship/combat/%2.ogg}
+
+#class {lights} close
+
+#class {repair} open
+
+    #action {%* repair orders into a console.} {vplay ship/computer/keyboard.ogg}
+    #action {That component isn't damaged.} {vplay misc/abort.ogg}
+    #action {Repair adjustments are made by the engineer.} {
+        vplay ship/combat/repair.ogg;
+        #line gag
+    }
+    #action {Drones continue repairing the starship.} {
+        vplay ship/combat/repair.ogg;
+        #line gag
+    }
+    #action {You hear drones overhead as they continue repairing the starship.} {
+        vplay ship/combat/repair.ogg;
+        #line gag
+    }
+    #action {You hear sounds outside the starship as it's repaired by the spaceport personnel.} {
+        vplay ship/combat/repairSpaceboat.ogg;
+        #line gag
+    }
+    #action {You tap a button on the keyboard, initializing a reload of the %*.} {
+        vplay ship/computer/keyboard.ogg;
+        #line gag
+    }
+    #action {Scraping and banging filters in to the room, and vibrations flow through the floor underfoot as the %1 reloaded.} {
+        vplay ship/combat/reloadStart.ogg;
+        #showme {Reloading %1.};
+        #line gag
+    }
+    #action {The sounds and vibrations come to an end as the %1 finish reloading.} {
+        vplay ship/combat/reloadEnd.ogg;
+        #showme {Reloaded %1.};
+        #line gag
+    }
+    #action {No weapons require reloading at this time.}{
+        vplay ship/combat/noReload.ogg;
+        #showme {Nothing reloading.};
+        #line gag
+    }
+
+#class {repair} close
+
+#class {capsules} open
+
+    #action {You are thrown into a rescue capsule as the ship explodes in a ball of flames.} {
+        vplay ship/combat/youDestroyed.ogg;
+        #line gag
+    }
+    #action {The rescue capsule moves away from the destroyed ship.} {vplay ship/move/accelerate.ogg}
+    #action {The capsule enters the FBN transit system, shuttering violently.} {vplay ship/move/fbnStart.ogg}
+    #action {The capsule shakes as it moves through the FBN transit system.} {vplay ship/move/capsuleCreaks.ogg}
+    #action {Finally, the capsule exits the FBN transit system.} {vplay ship/move/fbnEnd.ogg}
+    #action {The capsule begins moving to Farold Research Center.} {vplay ship/move/accelerate.ogg}
+    #action {The pod begins a slow landing in the docking bay.} {vplay ship/move/youLanding.ogg}
+    #action {The capsule touches down, and you quickly climb out.} {vplay ship/move/youLanded.ogg}
+
+#class {capsule} close

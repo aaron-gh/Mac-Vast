@@ -1,30 +1,41 @@
-#class {bunkicenter.net} open
+#CLASS {bunkicenter.net} OPEN
 
-    #nop sound alias
-    #alias {vplay %1.%2} {
-        #system play -v $vol "games/sounds/vast/%1.%2" -q 2>/dev/null &;
-        #gag {^[[0m#OK: EXECUTING %0}}
+#ALIAS {spreload}
+{
+    #read games/world/bunkicenter.net/bunkicenter.net.tin;
+    #read games/world/bunkicenter.net/airlock.tin;
+    #read games/world/bunkicenter.net/communication.tin;
+    #read games/world/bunkicenter.net/misc.tin;
+    #read games/world/bunkicenter.net/shipCombat.tin;
+    #read games/world/bunkicenter.net/shipComputer.tin;
+    #read games/world/bunkicenter.net/shipMisc.tin;
+    #read games/world/bunkicenter.net/shipMove.tin;
+    #read games/world/bunkicenter.net/vastVariables.tin;
+    #showme {Soundpack reloaded!}
+}
 
-    #nop connect/disconnect events
-    #event {SESSION DISCONNECTED} {#class vastVariables write games/world/bunkicenter.net/vastVariables.tin}
-    #event {SESSION CONNECTED} {
-        #read games/world/bunkicenter.net/airlock.tin;
-        #read games/world/bunkicenter.net/communication.tin;
-        #read games/world/bunkicenter.net/shipComputer.tin;
-        #read games/world/bunkicenter.net/misc.tin;
-        #read games/world/bunkicenter.net/shipMisc.tin;
-        #read games/world/bunkicenter.net/shipMove.tin;
-        #class vastVariables read games/world/bunkicenter.net/vastVariables.tin}
-    #alias {spreload} {
-        #read games/world/bunkicenter.net/bunkicenter.net.tin;
-        #read games/world/bunkicenter.net/airlock.tin;
-        #read games/world/bunkicenter.net/communication.tin;
-        #read games/world/bunkicenter.net/misc.tin;
-        #read games/world/bunkicenter.net/shipComputer.tin;
-        #read games/world/bunkicenter.net/shipMisc.tin;
-        #read games/world/bunkicenter.net/shipMove.tin;
-        #read games/world/bunkicenter.net/vastVariables.tin;
-        #showme {Soundpack reloaded!}
-    }
+#ALIAS {vplay %1.%2}
+{
+    #system play -v $vol "games/sounds/vast/%1.%2" -q 2>/dev/null &;
+    #gag {^[[0m#OK: EXECUTING %0}
+}
 
-#class {bunkicenter.net} close
+#EVENT {SESSION CONNECTED}
+{
+    #read games/world/bunkicenter.net/airlock.tin;
+    #read games/world/bunkicenter.net/communication.tin;
+    #read games/world/bunkicenter.net/shipCombat.tin;
+    #read games/world/bunkicenter.net/shipComputer.tin;
+    #read games/world/bunkicenter.net/misc.tin;
+    #read games/world/bunkicenter.net/shipMisc.tin;
+    #read games/world/bunkicenter.net/shipMove.tin;
+    #class vastVariables read games/world/bunkicenter.net/vastVariables.tin
+}
+
+#EVENT {SESSION DISCONNECTED}
+{
+    #class vastVariables write games/world/bunkicenter.net/vastVariables.tin
+}
+
+
+#CLASS {bunkicenter.net} CLOSE

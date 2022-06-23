@@ -1,7 +1,7 @@
 #class {channels} open
 
     #nop an experemental way of handling channels. This may not work.
-    #action {[%1] %2} {vplay Communication/%1.ogg}
+    #action {[%1] %2 "%3"} {vplay Communication/%1.ogg}
 
 #class {channels} close
 
