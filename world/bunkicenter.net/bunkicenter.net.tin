@@ -40,6 +40,6 @@
 {
     #class vastVariables write games/world/bunkicenter.net/vastVariables.tin
 }
-
+#alias {version} {#showme {You are currently running version $version of the soundpack.}}
 
 #CLASS {bunkicenter.net} CLOSE

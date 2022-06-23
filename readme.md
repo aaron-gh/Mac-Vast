@@ -127,3 +127,10 @@ Thank you to the creator of the Macriani soundpack for Miriani, which I used as 
 Thank you to the respective creators of sounds used, permission was granted to Bunkicenter to use those sounds.
 
 Thank you to the rest of the Bunkicenter staff, for putting up with my constant testing over the last few days.
+
+
+# 5 Reporting issues
+
+There are mutliple ways to report issues. Either via the "report" command in game, or though Github. The use of Github is preferd, as game reports should really only be used for game issues, not for issues with the soundpack, however you may use it if you wish.
+
+Once again, if you are using the "Dev" branch **only** report issues through github.
