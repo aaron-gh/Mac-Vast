@@ -11,3 +11,52 @@
 
 #class {groundWeapons} close
 
+#class {healing} open
+
+    #action {The tip of %* pops out of the pressure release valve on %*.} {vplay combat/pop.ogg}
+    #action {%1 aims a nozzle at %2, and squeezes a trigger.} {
+        #if {"%2" == "you"} {vplay combat/healed.ogg};
+        #showme {%1 heals %2.};
+        #line gag
+    }
+
+#class {healing} close
+
+#class {groundCombat} open
+
+    #action {Your shot goes wide!}{
+        vplay combat/Miss.ogg;
+        #showme {missed!};
+        #line gag
+    }
+    #action {%1 keels over, takes its last breath, and dies!} {
+        vplay combat/die.ogg;
+        #show {%1 dies!};
+        #line gag
+    }
+    #action {You scored %1 %2 on %3. Total damage: %4} {
+        vplay combat/hit.ogg;
+        #showme{%1 %2. %4 damage.};
+        #line gag
+    }
+    #action {%1 prepares to do a %2 heal on %3.} {vplay combat/enemyHeal.ogg}
+    #action {* completes a * heal on *.} {vplay combat/EnemyHealComplete.ogg}
+    #action {You quickly dodge out of the way of %1.} {
+        vplay combat/dodge.ogg;
+        #showme {%1 dodged.};
+        #line gag
+    }
+    #action {A flare pellet explodes in a bright blue violet light over %2 head.} {
+        vplay combat/flare.ogg;
+        #showme {%1 flared!};
+        #line gag
+    }
+    #action {%1 focuses on you.} {vplay combat/focusYou.ogg]
+    #action {%1 turns its focus towards %2.} {
+        vplay combat/focusOther.ogg;
+        #show {%1 focuses on %2.};
+        #line gag
+    }
+    #action {You've just lost %* of your overall health.} {vplay combat/healthLost.ogg}
+
+#class {groundCombat} close

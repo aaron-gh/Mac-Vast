@@ -78,8 +78,8 @@
 
     #action {Critical. The staff have opened a new support with you. Please type SUPPORT to view.} {vplay communication/support.ogg}
     #action {^The staff have replied to your support.} {vplay communication/support.ogg}
-    #action {A staff member shouts %*} {vplay communication/shout.ogg}
+    #action {^A staff member shouts} {vplay communication/shout.ogg}
     #action {^announcement from the staff} {vplay communication/announcement.ogg}
-    #action {[game change]: %*} {vplay communication/change.ogg}
+    #action {[Game Change]: %*} {vplay communication/change.ogg}
 
 #class {staff} close
