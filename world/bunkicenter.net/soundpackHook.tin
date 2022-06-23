@@ -1,9 +1,10 @@
 #class {spHook} open
 
-    #action {#$#sp | %1 | %2 |%3} {
+    #action {#$#sp | %1 | %2 | %3} {
         #if {"%1" == "groups"} {vplay misc/%2.ogg};
         #if {"%1" == "position"} {vplay socials/%2.ogg};
         #if {"%1" == "social"} {vplay socials/%2-%3.ogg};
+        #if {"%2" == "say"} {vplay socials/say.ogg};
         #line gag
     }
 
