@@ -51,7 +51,7 @@
         #showme {%1 flared!};
         #line gag
     }
-    #action {%1 focuses on you.} {vplay combat/focusYou.ogg]
+    #action {%1 focuses on you.} {vplay combat/focusYou.ogg}
     #action {%1 turns its focus towards %2.} {
         vplay combat/focusOther.ogg;
         #show {%1 focuses on %2.};
