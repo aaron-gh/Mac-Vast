@@ -27,3 +27,5 @@
       vplay ship/computer/display.ogg;
       #line gag
     }
+
+#class {shipStatus} close
