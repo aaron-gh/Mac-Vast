@@ -1,7 +1,17 @@
 #class {localEdit} open
 
-    #action {^#$# edit %1 upload: %2} {#var {upload} {%2}; #buffer {clear}} {4}
-    #action {^.} {#buffer {write} games/world/verb.txt; #system printf "%s\n" 1d w q | ed games/world/verb.txt; #system echo . >> games/world/verb.txt}
-    #alias {sendverb} {$upload; #textin {games/world/verb.txt}}
+    #action {^#$# edit %1 upload: %2} {
+        #var {upload} {%2};
+        #buffer {clear}
+    } {4}
+    #action {^.} {
+        #buffer {write} games/world/verb.txt;
+        #system printf "%s\n" 1d w q | ed games/world/verb.txt;
+        #system echo . >> games/world/verb.txt
+    }
+    #alias {sendverb} {
+        $upload;
+        #textin {games/world/verb.txt}
+    }
 
 #class {localEdit} close
