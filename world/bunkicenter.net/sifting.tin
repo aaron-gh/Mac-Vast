@@ -1,0 +1,11 @@
+#class {sifting} open
+
+    #action {You lean over and dip a %* pebble sifter into the water. After a moment, you begin moving it around.} {vplay sifting/enterStream.ogg}
+    #action {Your net continues sifting.} {vplay sifting/enterStream.ogg}
+    #action {The display screen on your net flashes, indicating that a pebble with traces of Glatonite was found. A mechanism on the net's handle tips the net up towards the sky, allowing the pebble to roll down into a secure compartment within the handle.} {vplay sifting/collect.ogg}
+    #action {The display screen on your net flashes, indicating that you found no pebbles.} {vplay sifting/noPebble.ogg}
+    #action {A fish gets tangled in your net and the sifter begins to click. After a moment, it releases the fish back into the water.} {vplay sifting/fish.ogg}
+    #action {A green light turns red on a %* pebble sifter, as the compartment fills.} {vplay sifting/full.ogg}
+    #action {a %* pebble sifter gets stuck on %* and damages the net, so you pull it out of the water.} {vplay sifting/repair.ogg}
+
+#class {sifting} close

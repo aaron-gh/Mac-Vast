@@ -9,6 +9,7 @@
     #read games/world/bunkicenter.net/localEdit.tin;
     #read games/world/bunkicenter.net/mining.tin;
     #read games/world/bunkicenter.net/misc.tin;
+    #read games/world/bunkicenter.net/sifting.tin;
     #read games/world/bunkicenter.net/shipCombat.tin;
     #read games/world/bunkicenter.net/shipComputer.tin;
     #read games/world/bunkicenter.net/shipMisc.tin;
@@ -32,6 +33,7 @@
     #read games/world/bunkicenter.net/localEdit.tin;
     #read games/world/bunkicenter.net/mining.tin;
     #read games/world/bunkicenter.net/misc.tin;
+    #read games/world/bunkicenter.net/sifting.tin;
     #read games/world/bunkicenter.net/shipCombat.tin;
     #read games/world/bunkicenter.net/shipComputer.tin;
     #read games/world/bunkicenter.net/shipMisc.tin;
