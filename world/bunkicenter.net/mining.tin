@@ -33,9 +33,9 @@
     #action {A massive explosion rings out from %* mining borer and debris crashes around you, blocking off the exit leading %1.} {vplay mining/explode.ogg}
     #action {You key a command into a control panel on %* mining borer and a small battering ram extends from the frunt of the unit.} {vplay mining/extend.ogg}
     #action {%* mining borer turns to the wall facing %* and starts bashing large chunks of rubble, trying to create an opening.} {vplay mining/wallBash.ogg}
-    #action {* mining borer shovels chunks of broken up rubble away from the closed off exit.} {vplay mining/rubbleMove.ogg}
-    #action {The battering ram retracts back into * mining borer to clean off some rock shavings.} {vplay mining/retract.ogg}
-    The power handle on * mining cart deactivates, and slams back down, relocking into place, leaving the unit completely silent.} {
+    #action {%* mining borer shovels chunks of broken up rubble away from the closed off exit.} {vplay mining/rubbleMove.ogg}
+    #action {The battering ram retracts back into %* mining borer to clean off some rock shavings.} {vplay mining/retract.ogg}
+    #action {The power handle on %* mining cart deactivates, and slams back down, relocking into place, leaving the unit completely silent.} {
          vplay mining/cartEnd.ogg;
         #showme {Transfer finished.};
         #line gag
