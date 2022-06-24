@@ -57,7 +57,7 @@ cp ~/games/world/bunkicenter.net/custom.tin ~/games/world/bunkicenter.net/vast.t
 
 Make a copy of variables-default.tin and call it variables.tin
 
-cp ~/games/world/variables-default.tin ~/games/variables.tin
+cp ~/games/world/variables-default.tin ~/games/world/variables.tin
 
 Make a copy of vastVariables-default.tin and call it vastVariables.tin
 
@@ -141,10 +141,10 @@ I have provided several aliases and macros in this pack to allow for reloading, 
 * addworld <host> <port> [character] [password]: To be ran before connecting to a world if you wish to add a new world. char and password are optional.
 * delteworld <world>: deletes a world.
 * connect <world>: connects to a world.
-* F9: Check sound volume.
-* F10: mute/unmute toggle for all sounds.
-* F11: turn volume down. Please do not go below 0.0 (I haven't implemented a limit on this yet.)
-* f12: Raise volume (Please don't go about 2.0, again, not limit yeted.)
+* F1: Check sound volume.
+* F2: mute/unmute toggle for all sounds.
+* F3: turn volume down. Please do not go below 0.0 (I haven't implemented a limit on this yet.)
+* f4: Raise volume (Please don't go about 2.0, again, not limit yeted.)
 
 # 4 Credits
 

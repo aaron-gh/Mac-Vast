@@ -53,21 +53,21 @@
 #variable {vol} {%1};
 	#showme {Sound volume now at %1.}
 }
-#macro {\e[20~}
+#macro {\eOQ}
 {
 	#showme {Sound volume is at $vol\.}
 }
-#macro {\e[23~}
+#macro {\eOR}
 {
 #math {vol} {$vol - .05};
 play luaaudio/down.mp3;#showme {Sound volume now at $vol\.}
 }
-#macro {\e[24~}
+#macro {\eOS}
 {
 #math {vol} {$vol + .05};
 	play luaaudio/up.mp3;#showme {Sound volume now at $vol\.}
 }
-#macro {\e[21~}
+#macro {\eOP}
 {
 #if {"$vol" != "0"}
 {
