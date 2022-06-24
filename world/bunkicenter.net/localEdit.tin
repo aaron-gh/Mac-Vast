@@ -7,7 +7,8 @@
     #action {^.} {
         #buffer {write} games/world/verb.txt;
         #system printf "%s\n" 1d w q | ed games/world/verb.txt;
-        #system echo . >> games/world/verb.txt
+        #system echo . >> games/world/verb.txt;
+        #system open games/world/verb.txt
     }
     #alias {sendverb} {
         $upload;
