@@ -1,0 +1,37 @@
+#class {mining} open
+
+    #action {The shuttle speeds from the area, racing %* a small shaft.} {vplay mining/shuttle.ogg}
+    #action {You swipe your finger across %* mining scanner, and it begins scanning for minerals.} {vplay mining/scan.ogg}
+    #action {You push a button on * mining borer which begins to dig a shaft into the mine's surface.} {vplay mining/startBorer.ogg}
+    #action {The motor on %* mining borer goes quiet as the unit shuts down.} {vplay mining/borerEnd.ogg}
+    #action {A spark shoots out from %* mining borer as it strikes a large stone.} {vplay mining/stoneStrike.ogg}
+    #action {Grinding comes from %* mining borer and it slows to a halt as it gets damaged.} {vplay mining/borerDamage.ogg}
+    #action {A screen on %* mining borer displays the following mineral was collected: %1.} {
+        vplay mining/collect.ogg;
+        #showme {Collected %1.};
+        #line gag
+    }
+    #action {A screen on %* mining borer displays the following minerals were collected: %1.} {
+        vplay mining/collect.ogg;
+        #showme {Collected %1.};
+        #line gag
+    }
+    #action {%* mining borer grinds to a sudden stop.} {vplay mining/borerStop.ogg}
+    #action {Small rocks fly up from around %* mining borer as it continues boring deeper into the shaft.} {vplay mining/rocks.ogg}
+    #action {%* mining borer slowly moves dirt and rock away from the unit.} {vplay mining/rocks.ogg}
+    #action {A display on %* mining borer flashes, "Storage full."} {
+        vplay mining/storageFull.ogg;
+        #showme {Storage full.};
+        #line gag
+    }
+    #action {A loud vacuum activates on %* mining cart allowing air to pump through the attached tubing. A moment later, the pressure builds enough to begin moving minerals from the bore into the cart.} {
+        vplay mining/cartStart.ogg;
+        #showme {Transfer started.};
+        #line gag
+    }
+    #action {This area has already been scanned.} {vplay mining/explored.ogg}
+    #action {A massive explosion rings out from %* mining borer and debris crashes around you, blocking off the exit leading %1.} {vplay mining/explode.ogg}
+    #action {You key a command into a control panel on %* mining borer and a small battering ram extends from the frunt of the unit.} {vplay mining/extend.ogg}
+    #action {%* mining borer turns to the wall facing %* and starts bashing large chunks of rubble, trying to create an opening.} {vplay mining/rocks.ogg}
+
+#class {mining} close
