@@ -58,7 +58,7 @@
         #line gag
     }
     #action {Over the line, you hear a click sound, indicating that the call has been ended.} {
-        vplay Communication/callEnded.ogg;
+        vplay Communication/callEnd.ogg;
         #showme {Call ended.};
     #line gag
     }
