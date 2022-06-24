@@ -1,0 +1,11 @@
+#CLASS {variables} OPEN
+
+#EVENT {SESSION DEACTIVATED}
+{
+    #class {variables} {write} {games/world/Variables.tin}
+}
+
+#VARIABLE {logfile} {}
+#VARIABLE {vol} {1.00}
+
+#CLASS {variables} CLOSE

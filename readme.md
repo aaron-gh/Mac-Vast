@@ -55,6 +55,10 @@ Now, make a copy of the file called "custom.tin" and name it "vast.tin"
 
 cp ~/games/world/bunkicenter.net/custom.tin ~/games/world/bunkicenter.net/vast.tin
 
+Make a copy of vastVariables-default.tin and call it vastVariables.tin
+
+cp ~/games/world/bunkicenter.net/vastVariables-default.tin ~/games/world/bunkicenter.net/vastVariables.tin
+
 Make the logs directory:
 
 mkdir ~/games/logs
@@ -92,6 +96,12 @@ copy everything from the folder the repository files are located in (this will b
 cp -r <repository-path> ~/games
 
 Rename "games/world/bunkicenter.net/custom.tin". to "vast.tin"
+
+mv ~/games/world/bunkicenter.net/custom.tin ~/games/world/bunkicenter.net/vast.tin
+
+Make a copy of vastVariables-default.tin and call it vastVariables.tin
+
+cp ~/games/world/bunkicenter.net/vastVariables-default.tin ~/games/world/bunkicenter.net/vastVariables.tin
 
 Make the logs directory:
 
