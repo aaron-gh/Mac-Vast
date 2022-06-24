@@ -2,6 +2,5 @@
 
 #VARIABLE {devMode} {0}
 #VARIABLE {rtime} {1}
-#VARIABLE {version} {0.2}
 
 #CLASS {vastVariables} CLOSE
