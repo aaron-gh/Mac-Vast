@@ -55,9 +55,9 @@ Now, make a copy of the file called "custom.tin" and name it "vast.tin"
 
 cp ~/games/world/bunkicenter.net/custom.tin ~/games/world/bunkicenter.net/vast.tin
 
-Make a copy of vastVariables-default.tin and call it vastVariables.tin
+Make a copy of variables-default.tin and call it variables.tin
 
-cp ~/games/world/bunkicenter.net/vastVariables-default.tin ~/games/world/bunkicenter.net/vastVariables.tin
+cp ~/games/world/variables-default.tin ~/games/variables.tin
 
 Make the logs directory:
 
@@ -99,9 +99,9 @@ Rename "games/world/bunkicenter.net/custom.tin". to "vast.tin"
 
 mv ~/games/world/bunkicenter.net/custom.tin ~/games/world/bunkicenter.net/vast.tin
 
-Make a copy of vastVariables-default.tin and call it vastVariables.tin
+Make a copy of vastVariables-default.tin and call it variables.tin
 
-cp ~/games/world/bunkicenter.net/vastVariables-default.tin ~/games/world/bunkicenter.net/vastVariables.tin
+cp ~/games/world/variables-default.tin ~/games/world/variables.tin
 
 Make the logs directory:
 
