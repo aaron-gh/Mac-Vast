@@ -26,13 +26,14 @@
             #delay {%1} {vplay misc/roundtimeOver.ogg}
         }
     }
+    #gag {You peer %* and see...}
 
     #nop Contamination scanners
     #action {A sensor begins to slowly scan you from head to toe.} {vplay misc/sensorScan.ogg}
     #action {A nozzle extends, blasting you with air.} {vplay misc/airStart.ogg}
 
     #nop Money money money!
-    #action {You receive %* dollars %*} {vplay misc/getMoney.ogg}
+    #action {^You receive %* dollars} {vplay misc/dollars.ogg}
     #action {A payment of %* dollars %*} {vplay misc/giveMoney.ogg}
 
     #nop prompts

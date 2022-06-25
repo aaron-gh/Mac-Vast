@@ -2,12 +2,12 @@
 
     #action {You begin loading ammunition from %* into %*.} {vplay combat/loadingAmmo.ogg}
     #action {You continue loading ammunition into %* from %*.} {vplay combat/continue.ogg}
-    #action {You slide a * into a slot near the butt of *. You then lock a latch, securing the clip into place.} {vplay combat/loadClip.ogg}
+    #action {You slide a %* into a slot near the butt of %*. You then lock a latch, securing the clip into place.} {vplay combat/loadClip.ogg}
     #action {You unclip a latch on %* and draw %*.} {vplay Combat/draw.ogg}
     #action {You slide %* inside %* and lock it into place.} {vplay Combat/holster.ogg}
     #action {You pull the hammer back on * revolver and spin the cylinder.} {vplay combat/spin.ogg}
     #action {%1 aims %2 at %3, and fires %4 shot%*} {#line gag}
-    #action {You aim %1 at %2, and fire %3 shot%*} {vplay combat/aim.ogg}
+    #action {You aim at %1 with %2, and fire %3!} {vplay combat/aim.ogg}
 
 #class {groundWeapons} close
 
@@ -34,13 +34,13 @@
         #show {%1 dies!};
         #line gag
     }
-    #action {You scored %1 %2 on %3. Total damage: %4} {
+    #action {You scored %1 %2 on %3. Total damage: (%4)} {
         vplay combat/hit.ogg;
-        #showme{%1 %2. %4 damage.};
+        #showme {%1 %2. %4 damage.};
         #line gag
     }
     #action {%1 prepares to do a %2 heal on %3.} {vplay combat/enemyHeal.ogg}
-    #action {* completes a * heal on *.} {vplay combat/EnemyHealComplete.ogg}
+    #action {%* completes a %* heal on %*.} {vplay combat/EnemyHealComplete.ogg}
     #action {You quickly dodge out of the way of %1.} {
         vplay combat/dodge.ogg;
         #showme {%1 dodged.};
