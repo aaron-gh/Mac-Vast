@@ -12,7 +12,7 @@
         vplay ship/combat/cannon.ogg;
         #line gag
     }
-    #action {The ship shudders violently as its * launched.} {
+    #action {The ship shudders violently as its %* launched.} {
         vplay ship/combat/torp.ogg;
         #line gag
     }
@@ -22,7 +22,7 @@
 
 #class {shipCombat} open
 
-    #action {* is within one unit of this starship.} {
+    #action {%* is within one unit of this starship.} {
         vplay ship/combat/range.ogg;
         #line gag
     }
@@ -66,7 +66,7 @@
     #action {Target lost.} {vplay ship/combat/targetLost.ogg}
     #action {The computer is now targeting %1.} {
         vplay ship/combat/targeting.ogg;
-        #showme {Targetign %1.};
+        #showme {Targetting %1.};
       #line gag
     }
     #action {There are no starships in range.} {vplay ship/combat/noRange.ogg}

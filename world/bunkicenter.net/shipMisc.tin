@@ -17,7 +17,7 @@
     }
     #action {You flick a switch on %1 and %2 is slowly unloaded from the ship's storage room, and lowered to the ground by a pulley system on the hull of the ship.} {
         vplay ship/misc/load.ogg;
-        #showme {%1 unloaded from %2.};
+        #showme {%2 unloaded from %1.};
         #line gag
     }
 
