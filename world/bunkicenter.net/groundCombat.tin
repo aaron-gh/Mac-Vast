@@ -46,7 +46,7 @@
         #showme {%1 dodged.};
         #line gag
     }
-    #action {A flare pellet explodes in a bright blue violet light over %2 head.} {
+    #action {A flare pellet explodes in a bright blue violet light over %1 head.} {
         vplay combat/flare.ogg;
         #showme {%1 flared!};
         #line gag

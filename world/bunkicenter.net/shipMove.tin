@@ -45,7 +45,7 @@
         #line gag
     }
     #action {The shaking comes to a stop as the shuttle drive shuts down.} {
-        vplay ship/misc/shuttleEnd.ogg;
+        vplay ship/move/shuttleEnd.ogg;
         #line gag
     }
 
@@ -54,13 +54,13 @@
 #class {fbn} open
 
     #action {The ship shudders as it enters the FBN transit system.} {vplay ship/move/fbnStart.ogg}
-    #action {The hull creeks slightly as it exits the transit system.} {vplay ship/move/fbnEnd.ogg}
+    #action {The hull creaks slightly as it exits the transit system.} {vplay ship/move/fbnEnd.ogg}
 
 #class {fbn} close
 
 #class {otherMovement} open
 
-    #action {The %* touches down on the landing area.} {vplay ship/misc/otherLanded.ogg}
+    #action {The %* touches down on the landing area.} {vplay ship/move/otherLanded.ogg}
     #action {The %* lands on %*} {vplay ship/move/otherLanded.ogg}
     #action {The %* docks with %*} {vplay ship/move/otherDocked.ogg}
     #action {The area vibrates under foot as the %* lifts off into space.} {vplay ship/move/otherLaunched.ogg}
@@ -80,6 +80,6 @@
     #action {Hydraulic arms ease %* to the %*.} {vplay ship/move/toLanding.ogg}
     #action {Hydraulic arms ease %* into the %*.} {vplay ship/move/toGarage.ogg}
     #action {Hydraulic arms move %* into the %*.} {vplay ship/move/toGarage.ogg}
-    #action {Hydraulic arms move %* onto the %*.} {vplay ship/movement/toLanding.ogg}
+    #action {Hydraulic arms move %* onto the %*.} {vplay ship/move/toLanding.ogg}
 
 #class {transport} close
