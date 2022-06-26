@@ -1,0 +1,11 @@
+#class {nepDrive} open
+
+    #action {An unobtrusive warning klaxon begins to sound as the NEP drive's reactor filters energy into it.} {vplay ship/explore/nepStart.ogg}
+    #action {The starship phases back into normal space.} {vplay ship/explore/nepStop.ogg}
+    #action {The ship shudders, indicating that the NEP drive may not be balanced correctly.} {vplay ship/explore/nepPop.ogg}
+    #action {A popping sound comes from the location of the nep drive.} {vplay ship/explore/nepPop.ogg}
+    #action {The NEP drive control board chimes as the starship  travels another light-year.} {vplay ship/explore/nepChime.ogg}
+    #action {The NEP sensor board alerts that %* has been detected %*} {vplay ship/explore/nepFound.ogg}
+
+#class {nepDrive} close
+

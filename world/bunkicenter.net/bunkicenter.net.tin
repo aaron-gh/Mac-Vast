@@ -5,6 +5,7 @@
     #read games/world/bunkicenter.net/bunkicenter.net.tin;
     #read games/world/bunkicenter.net/airlock.tin;
     #read games/world/bunkicenter.net/communication.tin;
+    #read games/world/bunkicenter.net/explore.tin;
     #read games/world/bunkicenter.net/groundCombat.tin;
     #read games/world/bunkicenter.net/localEdit.tin;
     #read games/world/bunkicenter.net/mining.tin;
@@ -29,6 +30,7 @@
 {
     #read games/world/bunkicenter.net/airlock.tin;
     #read games/world/bunkicenter.net/communication.tin;
+    #read games/bunkicenter.net/explore.tin;
     #read games/world/bunkicenter.net/groundCombat.tin;
     #read games/world/bunkicenter.net/localEdit.tin;
     #read games/world/bunkicenter.net/mining.tin;
