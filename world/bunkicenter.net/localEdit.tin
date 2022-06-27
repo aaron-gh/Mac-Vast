@@ -4,7 +4,7 @@
         #var {upload} {%2};
         #buffer {clear}
     } {4}
-    #action {^.} {
+    #action {^.$} {
         #buffer {write} games/world/verb.txt;
         #system printf "%s\n" 1d w q | ed games/world/verb.txt;
         #system echo . >> games/world/verb.txt;
