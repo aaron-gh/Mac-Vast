@@ -50,5 +50,6 @@
 }
 #var {version} {0.4}
 #alias {spversion} {#showme {You are currently running version $version of the soundpack.}}
+#alias {script} {#system open games/world/%0.tin}
 
 #CLASS {bunkicenter.net} CLOSE
