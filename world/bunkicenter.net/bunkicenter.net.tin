@@ -30,7 +30,7 @@
 {
     #read games/world/bunkicenter.net/airlock.tin;
     #read games/world/bunkicenter.net/communication.tin;
-    #read games/bunkicenter.net/explore.tin;
+    #read games/world/bunkicenter.net/explore.tin;
     #read games/world/bunkicenter.net/groundCombat.tin;
     #read games/world/bunkicenter.net/localEdit.tin;
     #read games/world/bunkicenter.net/mining.tin;
@@ -49,7 +49,7 @@
     #class vastVariables write games/world/bunkicenter.net/vastVariables.tin
 }
 #var {version} {0.4}
-#alias {spversion} {#showme {You are currently running version $version of the soundpack.}}
+#alias {^spversion$} {#showme {You are currently running version $version of the soundpack.}}
 #alias {script} {#system open games/world/%0.tin}
 
 #CLASS {bunkicenter.net} CLOSE
