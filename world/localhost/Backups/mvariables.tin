@@ -1,0 +1,11 @@
+#CLASS {mvariables} OPEN
+
+#VARIABLE         {cpoints}  {2676.23}
+#VARIABLE         {debkills}  {={0}}
+#VARIABLE         {destroyed}  {={0}}
+#VARIABLE         {lpoints}  {20988.10}
+#VARIABLE         {result}  {1}
+#VARIABLE         {socials}  {={true}}
+#VARIABLE         {spversion}  {0.9.8}
+
+#CLASS {mvariables} CLOSE

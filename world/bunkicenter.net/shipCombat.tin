@@ -70,6 +70,12 @@
       #line gag
     }
     #action {There are no starships in range.} {vplay ship/combat/noRange.ogg}
+    #action {^Targeting %1 at coordinates %2.} {
+    vplay ship/combat/targetEntered.ogg;
+        #if {"%1" != "empty space"} {vplay ship/combat/targetLocked.ogg};
+    #showme {%1 at %2};
+    #line gag
+    }
 
 #class {targeting} close
 
@@ -103,7 +109,7 @@
         vplay ship/computer/keyboard.ogg;
         #line gag
     }
-    #action {Scraping and banging filters in to the room, and vibrations flow through the floor underfoot as the %1 reloaded.} {
+    #action {Scraping and banging filters in to the room, and vibrations flow through the floor underfoot as the %1 are reloaded.} {
         vplay ship/combat/reloadStart.ogg;
         #showme {Reloading %1.};
         #line gag

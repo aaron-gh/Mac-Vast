@@ -204,7 +204,7 @@ play luaaudio/up.ogg;
 #class %2 read games/world/$worldurl/%2.tin;
 log on
 }
-}
+};
 #event {SESSION CONNECTED} 
 {
 #read {games/world/variables.tin

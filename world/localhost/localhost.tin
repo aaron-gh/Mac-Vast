@@ -1,0 +1,2108 @@
+#CLASS {toastsoft.net} OPEN
+
+#NOP Sound Settings
+#alias {mplay %1.%2}
+{
+#system play -v $vol "games/sounds/miriani/%1.%2" -q 2>/dev/null &;
+#gag {^[[0m#OK: EXECUTING %0}}
+#NOP connection and settings
+#event {SESSION DISCONNECTED} {
+#class mvariables write games/world/toastsoft.net/mvariables.tin
+}
+#event {SESSION CONNECTED} {#read games/world/toastsoft.net/miriani.tin}
+#class mvariables read games/world/toastsoft.net/mvariables.tin;
+mplay Music/@intmath{1d64}.ogg
+#alias {spreload} {
+#read games/world/toastsoft.net/toastsoft.net.tin;
+#read games/world/toastsoft.net/miriani.tin;
+#read games/world/toastsoft.net/mvariables.tin
+}
+#config {command echo} off
+#gag {^$}
+#action {*** Connected ***}
+{
+#showme {Thank you for using the Macriani soundpack for Tintin++ created and maintained by Beatrice Carmichael.};
+#showme {Any questions, comments, or suggestions, please contact Beatrice via her lore ID of "Beatrice" or via the OOC/soundpacks message board.};
+#line gag}
+#action {#$#mcp version: 2.1 to: 2.1}
+{#line gag;
+\#$#register_soundpack macriani | 2.0
+}
+#action {#$#soundpack status ok}
+{
+mplay general/misc/uptodate.mp3;
+#showme Your sound pack is up-to-date.;
+#line gag
+}
+#NOP aliases and macros
+#sub {%s %1 %s} { %1 }
+#action {Enter your selection:} 
+{
+mplay general/misc/prompt.ogg
+}
+#action {[%*Enter "yes" or "no"]} 
+{
+mplay general/misc/prompt.ogg
+}
+#action {[Type a line of input or `@abort' to abort the command.]} {
+mplay general/misc/prompt.ogg
+}
+#gag {You see nothing special.}
+#sub  {Directions from %1 to %2: %3.} {%3}
+#action {%*#$#hjelp} 
+{
+mplay general/misc/beep10.ogg;
+#line gag
+}
+#NOP archaeology
+#action {[%1; %2 Site %3] (%4) (%5, 15) (%6 environment)}
+{
+#if {$ArtiCoords == %5} 
+{
+mplay general/archaeology/artifacthere.ogg;
+#unvar ArtiCoords};#var {OldArtiCoords} {%5}
+}
+#sub {[%1; %2 Site %3] (%4) (%5) (%6 environment)}
+{
+(%5) [%1; %2 Site %3] (%4) (%6)}
+#sub {[%1; %2 Site] (%3) (%4)}
+{
+(%4) [%1; %2 site] (%3)
+}
+#action {[%1; %2 Site] (%3) (%4)}
+{
+#if {$ArtiCoords == %4} 
+{
+mplay general/archaeology/artifacthere.ogg;
+#unvar ArtiCoords};
+#var {OldArtiCoords} {%4}
+}
+#action {You press a small button on the side of a level %1 archaeological dig site scanner and begin directing it toward several likely locations.} 
+{
+mplay general/archaeology/scanstart.ogg;
+mplay general/archaeology/scanner@intmath{1d4}.ogg;
+#line gag
+}
+#action {%*A level %1 archaeological dig site scanner indicates that you should move to (%2).} 
+{
+#var {ArtiCoords} {%2};
+#showme $OldArtiCoords to $ArtiCoords;
+mplay general/archaeology/artifactNear.ogg;
+#line gag
+}
+#action {A level %1 archaeological dig site scanner indicates that there is an artifact buried approximately %2 feet beneath the surface.} 
+{
+#variable {artidepth} {%2};
+mplay general/archaeology/artifacthere.ogg;
+#showme {%2};
+#line gag
+} 
+#action {You thrust a small shovel into the ground and begin methodically removing large chunks of dirt.} 
+{
+mplay general/archaeology/shovel@intmath{1d14}.ogg;
+#math {artidepth} {$artidepth -0.5};
+#showme $artidepth;
+#line gag
+}
+#action {%*You%*cease digging.} 
+{
+mplay General/Archaeology/Cease.ogg;
+#line gag
+}
+#action {You begin gently brushing dirt aside with a small brush.} 
+{
+mplay General/Archaeology/Brush@intmath{1d8}.ogg;
+#line gag
+}
+#action {You firmly wedge a sleek metallic digging apparatus into the ground and press a trigger on the handle. The attached shovel immediately goes to work, sending debris %1} 
+{
+mplay general/archaeology/shovel@math{1d14}.ogg;
+#math {artidepth} {$artidepth -2};
+#showme $artidepth;
+#line gag
+}
+#sub {A glowing string of numbers in the corner of the HUD reads: %1 feet. The display indicates %2 of oxygen remaining.}
+{%2 oxygen remaining at %1 feet.}
+#sub {You are at %1.} {%1}
+#action {%*Your digging reveals %*. You stoop down
+and quickly retrieve it.
+} {
+#var {artidepth} {0};
+#var {articoords} {0};
+mplay general/archaeology/ArtifactGet.wav
+}
+#action {The hud on a %1diving helmet flashes alarmingly, indicating the oxygen supply has dropped below %2} 
+{
+mplay general/archaeology/alert1.wav
+}
+#action {%*A plump red insect burrows deeper into the dirt as {a|an} %1 comes near.} 
+{
+mplay general/archaeology/random@math{1d9}.wav;
+#line gag
+}
+#action {%*A large insect with a rather prominent stinger whizzes by.} 
+{
+mplay general/archaeology/random6.wav;
+#line gag
+}
+#action {%*You suddenly feel more skilled in Archaeology!
+}
+{
+mplay general/archaeology/practice.wav
+}
+#action {%*A level %1 archaeological dig site scanner reports nothing nearby.} 
+{
+#showme Nothing nearby.;
+mplay general/archaeology/NothingFound.ogg;
+#line gag
+}
+#action {%*Your integrated buoyancy compensator draws oxygen from %1 oxygen {cylinder|tank} and you slowly begin to descend.} 
+{
+mplay general/archaeology/AirReleaseShort.wav;
+#line gag
+}
+#action {%*Your integrated buoyancy compensator vents air from its containment chamber
+into the surrounding water and you slowly begin to rise.} 
+{
+mplay general/archaeology/AirReleaseShort.wav;
+#line gag}
+#action {You swim {up|down|north|south|east|west|northeast|northwest|southeast|southwest}} 
+{
+mplay general/archaeology/underwater.wav;
+#line gag
+}
+#action {You gently slide %1 into a %2 archaeological artifact
+storage container.}
+{
+mplay general/container/arch.ogg
+}
+#action {A level %1 archaeological dig site scanner reports that there is an %2.}
+{
+mplay general/archaeology/ArtifactNear.ogg;
+#showme %2;
+#line gag
+}
+
+#NOP asteroid
+#action {You spend a moment searching for a suitable location to deploy an asteroid anchor.} 
+{
+mplay General/Asteroid/AnchorStart.ogg;
+#line gag
+}
+#action {Upon finding a suitable location, you press a small button on the side of an asteroid anchor, which forcefully buries itself into the ground.} 
+{
+mplay General/Asteroid/AnchorEnd.ogg;
+#line gag
+}
+#action {You begin to painstakingly tie a coil of sturdy line to an asteroid anchor.} 
+{
+mplay General/Asteroid/LineStart.ogg;
+#line gag
+}
+#action {You step back and admire your handiwork.} 
+{
+mplay General/Asteroid/LineEnd.ogg;
+#line gag
+}
+#action {You press a button on the side of an asteroid anchor, which works its way out of the ground. You pick it up.} 
+{
+mplay General/Asteroid/AnchorRemove.ogg;
+#line gag
+}
+#action {A light envelops the room and quickly sucks your asteroid hauling supplies into an asteroid hauling kit.} 
+{
+mplay General/Asteroid/KitRetrieve.ogg;
+#line gag
+}
+
+
+#NOP atmo salvaging
+#gag {You are suddenly pressed against your seat as the vehicle is catapulted out of the docking bay.} 
+#gag {"Vehicle catapult active. Prepare for extreme acceleration."}
+#action {You carefully pilot the vehicle into a small chamber above the docking bay.}
+{
+mplay general/Atmo/SalvageLaunch.wav;
+#line gag
+} 
+#action {You feel the pull of acceleration as the ship begins ascending through the planet's atmosphere.} 
+{
+mplay general/Atmo/salvagemove.wav;
+#line gag
+}
+#action {The ship comes to a halt in the planet's atmosphere.}
+{
+mplay general/Atmo/salvagestop.wav;
+#line gag
+}
+#action {The vehicle manages to break free from the pocket of wind and stabilize its course.}
+{
+mplay general/Atmo/salvagestop.wav;
+#line gag
+}
+#action {The pull of acceleration eases off as the ship ceases its ascent.} 
+{
+mplay general/Atmo/salvagestop.wav;
+#line gag
+}
+#action {You feel the pull of acceleration as the ship begins descending through the planet's atmosphere.} 
+{
+mplay general/atmo/salvagemove.wav;
+#line gag
+}
+#action {The pull of acceleration eases off as the ship ceases its descent.} 
+{
+mplay general/atmo/salvagestop.wav;
+#line gag
+}
+#action {You feel the pull of acceleration as the craft navigates through the atmosphere.} 
+{
+mplay general/atmo/salvagemove.wav;
+#line gag
+}
+#action {The pull of acceleration eases off as the craft completes its maneuvering.} 
+{
+mplay general/atmo/salvagestop.wav;
+#line gag
+}
+#action {You hear the sounds of the atmospheric scoop activating.} 
+{
+mplay general/atmo/salvagescoop.wav;
+#line gag
+}
+#action {%1 "Warning, avian lifeform in processing chamber. Expelling..."} 
+{
+mplay general/atmo/SalvageLifeform@intmath{1d2}.wav;
+#line gag
+}
+#action {%1You open the hatch of %2 and climb inside%3} 
+{
+mplay Ship/Misc/salvageenter.ogg;
+#line gag
+}
+#action {%1You climb out of the vehicle%2} 
+{
+mplay Ship/Misc/salvageexit.ogg;
+#line gag
+}
+#action {You hear a sharp whine as the vehicle accelerates through the%1} 
+{
+mplay general/atmo/SalvageDescent.wav;
+#line gag
+}
+#action {The vehicle carefully maneuvers into the docking bay.}
+{
+mplay General/Misc/SalvagerReturns.wav;
+#line gag
+}
+#action {You hear a gentle thud as the salvager sets down in the docking bay.}
+{
+mplay General/Misc/SalvagerLands.wav;
+#line gag
+}
+#action {A gust of atmospheric wind suddenly buffets the ship%1} 
+{
+mplay Ship/Misc/WindGust@intmath{1d2}.wav;
+#line gag
+}
+#action {The vehicle suddenly hits a pocket of fierce wind%1} 
+{
+mplay Ship/Misc/Wind.wav;
+#line gag
+}
+
+#NOP camera feed
+#action {^(%1) %2.} 
+{
+mplay General/Device/CameraFeed.wav;
+#showme {%2};
+#line gag
+}
+#action {(%1;%2) %3.}
+{
+mplay General/Device/CameraFeed.wav;
+#showme {%3};
+#line gag
+}
+#action {From your droid's camera, you see...}
+{
+mplay General/Device/CameraFeed.wav;
+#line gag
+}
+#action {(%1) You notice a bright flash of light%2a starship must be coming in%3} 
+{
+mplay General/Device/CameraFeed.wav;
+mplay Ship/Move/OtherLanding@intmath{1d3}.wav;
+#line gag
+}
+#action {(%1) A loud clicking is followed by the clatter of an empty cartridge to the floor.} 
+{
+mplay General/Device/CameraFeed.wav;
+mplay empty.wav;
+#line gag
+}
+#action {(%1) A%2clicks oddly. It must be out of ammo.} 
+{
+mplay General/Device/CameraFeed.wav;
+mplay emptygun.wav
+}
+#action {(%1) The shot hits %2's %3.} 
+{
+mplay General/Device/CameraFeed.wav;
+mplay General/Combat/OtherShot.wav
+}
+#action {(%1) The shot misses!} 
+{
+mplay General/Device/CameraFeed.wav;
+mplay General/Combat/ShotMisses.wav;
+#line gag
+} 
+#action {^(%1) (%2) %3} 
+{
+mplay General/Device/CameraFeed.wav;
+#showme {%3};
+#line gag
+}
+#action {[From Outside] %1} 
+{
+mplay General/Device/CameraFeed.wav;
+#showme {%1};
+#line gag
+}
+#action {[From Outside] You notice a bright flash of light%1a starship must be coming in%2}
+{
+mplay Ship/Move/OtherLanding@intmath{1d3}.wav;
+#line gag
+}
+#action {[From Outside] A loud clicking is followed by the clatter of an empty cartridge to the floor.}
+{
+mplay empty.wav
+}
+#action {[From Outside] %1clicks oddly. It must be out of ammo.}
+{
+mplay emptygun.wav
+}
+#action {[From Outside] The shot hits %1's %2.}
+{
+mplay General/Combat/OtherShot.wav
+}
+#action {[From Outside] The shot misses!}
+{
+mplay General/Combat/ShotMisses.wav
+}
+
+#NOP combat
+#action {You slide a%1out of a pulse emitter clip.} 
+{
+mplay General/Combat/DrawEMPulse@intmath{1d3}.ogg
+}
+#action {%1 slides a%2out of a pulse emitter clip.} 
+{
+mplay General/Combat/DrawEMPulse@intmath{1d3}.ogg
+}
+#action {You deftly draw a%1from a%2} 
+{
+mplay General/Combat/DrawGun@intmath{1d3}.ogg
+}
+#action {%1 deftly draws a%2from a%3} 
+{
+mplay General/Combat/DrawGun@intmath{1d3}.ogg
+}
+#action {A%1seems to have run out of energy.} 
+{
+mplay General/Combat/EmptyEmitter.ogg
+}
+#action {A loud clicking is followed by the clatter of an empty cartridge to the floor.} 
+{
+mplay general/combat/empty.ogg
+}
+#action {You aim a%1at%2and activate it.} 
+{
+mplay General/Combat/EMPulse@intmath{1d2}.ogg
+}
+#action {%1 aims a%2at%3 and activates it.} 
+{
+mplay General/Combat/EMPulse@intmath{1d2}.ogg
+}
+#action {You stop using%1for cover.} 
+{
+mplay general/combat/uncrouch.ogg
+}
+#action {%1 deftly {insert|inserts} %2 into {an|a} %3} 
+{
+mplay general/combat/holster.ogg
+}
+#action {You slide%1into a%2 where it settles into place with a small click.} 
+{
+mplay general/combat/holster.ogg
+}
+#action {%1 slides %2 into a %3, where it snaps into place with a click.} 
+{
+mplay general/combat/holster.ogg
+}
+#action {You carefully discharge a%1into a%2} 
+{
+mplay General/Combat/LoadEMPulse@intmath{1d3}.ogg
+}
+#action {%1 carefully discharges a%2into a%3} 
+{
+mplay General/Combat/LoadEMPulse@intmath{1d3}.ogg
+}
+#action {You hastily slam a%1into the open ammo slot of a%2} 
+{
+mplay General/Combat/LoadGun@intmath{1d3}.ogg
+}
+#action {%1 hastily slams a%2 into the open ammo slot of a%3} 
+{
+mplay General/Combat/LoadGun@intmath{1d3}.ogg
+}
+#action {A%1clicks oddly. It must be out of ammo.} 
+{
+mplay general/combat/emptygun.ogg
+}
+#action {The shot hits %1's %2.} 
+{mplay General/Combat/OtherShot@intmath{1d2}.ogg
+}
+#action {%1 points a%2at%3head and fires!} 
+{
+mplay General/Combat/OtherShot@intmath{1d2}.ogg
+}
+#action {The shot misses!} 
+{
+mplay General/Combat/ShotMisses@intmath{1d2}.ogg
+}
+#action {%1 suddenly begins to power down.} 
+{
+mplay General/Combat/Shutdown@intmath{1d4}.ogg
+}
+#action {%1 suddenly slumps over as %2 mechanical systems begin to shut down.} 
+{
+mplay General/Combat/Shutdown@intmath{1d4}.ogg
+}
+#action {A %1 falls to the ground, disabled.} 
+{mplay General/Combat/Shutdown@intmath{1d4}.ogg
+}
+#action {You crouch behind%1, using%2 for cover.} 
+{
+mplay general/combat/crouch.ogg
+}
+#action {%1 unloads a %2 from %3} 
+{
+mplay General/Combat/UnloadAmmo@intmath{1d5}.ogg
+}
+#action {You unload a %1 from %2} 
+{
+mplay General/Combat/UnloadAmmo@intmath{1d5}.ogg
+}
+#action {You depress the cartridge release lever on a %1, causing the loaded cartridge to slide out of the weapon, and into your hand.} 
+{
+mplay General/Combat/UnloadGun@intmath{1d2}.ogg
+}
+#action {%1 depresses the cartridge release lever on a %2, causing the loaded cartridge to slide out of the weapon, and into %3 hand.} 
+{
+mplay General/Combat/UnloadGun@intmath{1d2}.ogg
+}
+#action {The shot hits your %1.} 
+{mplay General/Combat/YouShot@intmath{1d2}.ogg
+}
+#action {You point %1 at your head and fire!} 
+{
+mplay General/Combat/YouShot@intmath{1d2}.ogg
+}
+#action {You skillfully dodge the shot.} 
+{
+mplay General/Combat/ShotMisses@intmath{1d2}.ogg
+}
+#action {%1 skillfully dodges the shot.} 
+{
+mplay General/Combat/ShotMisses@intmath{1d2}.ogg
+}
+#action {%1takes aim at you%2} 
+{
+mplay General/Combat/DrawEMPulse@intmath{1d3}.ogg
+}
+#action {%1joins your group%2} 
+{
+mplay general/misc/joins.ogg
+}
+#action {%1 take%2control of%3group%4} 
+{
+mplay general/misc/joins.ogg
+}
+#action {%1 insectoid creature scurries in%2} 
+{
+mplay General/Combat/PraelorScurry@intmath{1d}2.ogg
+}
+#action {%1You see %2 insectoid creature%3here%4} 
+{
+mplay General/Combat/PraelorScurry@intmath{1d2}.ogg
+}
+#action {A %1 insectoid creature crouches low to the ground and hisses, expelling a large quantity of an acidic compound at %2} 
+{
+mplay General/Combat/PraelorSpit@intmath{1d3}.ogg
+}
+#action {A %1 insectoid creature starts shrieking loudly, the pitch ramping up as it succumbs to the effects of the alkalines. Sections of its exoskeleton begin to swell, tiny bumps forming on the swelling sections%2} 
+{
+mplay General/Combat/PraelorDeath.ogg
+}
+#action {%1The shot blows a hole in a %2 insectoid creature's exoskeleton, sending a spray of acid outward%3} 
+{
+mplay General/Combat/PraelorHit.ogg
+}
+#action {You conjure up some mighty force and slam %1 into %2 You watch in satisfaction as a surge of energy courses through %3 body.} 
+{
+mplay General/Combat/StunBatonHit.wav
+}
+#action {A fuzzy creature lets out a pitiful screech before collapsing to the ground. It lifts its head weakly, staring at you with black, beady, watery eyes for a moment before wobbling and dropping its head, completing its life.} 
+{
+mplay General/fuzzy/death@intmath{1d2}.ogg
+}
+
+#NOP communication
+#action {You mute the %1 {channel|channels}.}
+{
+mplay General/Comm/Mute.wav;
+#showme {%1 muted.};
+#line gag
+}
+#action {You unmute the %1 {channel|channels}.}
+{
+mplay General/Comm/Unmute.wav;
+#showme {%1 unmuted.};
+#line gag
+}
+#action {[Chatter]%1} 
+{
+mplay General/Comm/Chatter.ogg
+}
+#action {%*[ %1 shatter%*immersion and {ask|asks|says|say}, %2} 
+{
+mplay General/Comm/rooc.wav;
+#showme %1 "%2";
+#line gag
+}
+#action {[%1| Channel %2] %3 transmits, %4} 
+{
+mplay General/Comm/Alliance.ogg
+}
+#action {Private Organization: %1 (%2)} 
+{
+#variable {orgname} {%1};
+#variable {orgshort} {%2}
+}
+#action {%*[$orgshort] %1 transmits, "%2"} 
+{
+#showme $orgshort %1, "%2";
+#line gag;
+mplay General/Comm/org.ogg}
+#action {[Short-range Communication]%1} 
+{
+mplay General/Comm/short.ogg
+}
+#action {[Tradesman Market] %1} 
+{ mplay general/comm/tradesman.ogg
+}
+#action {[General Communication] %1 transmits, %2} 
+{
+mplay General/Comm/General.ogg;
+#showme {[General] %1 transmits, %2};
+#line gag
+}
+#action {You activate %1 metafrequency %2 tuned to %3.}
+{
+mplay General/Device/activate@intmath{1d2}.ogg
+}
+#action {You deactivate %1 metafrequency %2 tuned to %3.}
+{
+mplay General/Device/Deactivate@intmath{1d2}.ogg
+}
+#action {[Frequency %1] %2 transmits, %3} 
+{
+mplay General/Comm/Metaf.ogg;
+#showme {[%1] %2 transmits, %3};
+#line gag
+}
+#action {[Private | %1] %2 transmits, %3} 
+{
+mplay General/Comm/Private.ogg;
+#showme {[%2] transmits, %3};
+#line gag
+}
+#action {[Private | %1] You transmit, %2} 
+{
+mplay General/Comm/Private.ogg;
+#showme {[%1] You transmit, %2};
+#line gag
+}
+#action {[Newbie] %1: %2} 
+{
+mplay General/Comm/Newbie.ogg
+}
+#action {%*a %1 flight control scanner {announce|announces}, "%2"} 
+{
+mplay General/Comm/FlightScanner@intmath{1d2}.ogg;
+#showme {%2};
+#line gag
+}
+#action {%1's voice comes over the intercom, saying, "%2"} 
+{
+mplay Ship/Comm/PA@intmath{1d9}.ogg;
+#showme {%1: %2};
+#line gag
+}
+#action {%1 {say|says}, "%2" into a small microphone mounted on the wall.} 
+{
+mplay Ship/Comm/pa@intmath{1d9}.ogg
+#showme {%1, %2};
+#line gag
+}
+#action {A voice comes over the speaker and says, %1}
+{mplay Ship/Comm/PA@intmath{1d9}.ogg;
+#showme {"%1"};
+#line gag
+}
+#action {%1 {presses|press} a small button mounted on the wall and say%2
+}
+{
+mplay Ship/Comm/PA@intmath{1d9}.ogg;
+#showme {"%2"};
+#line gag
+}
+#action {%1 {say|says|ask|asks}, "%2"} 
+{
+mplay general/socials/say.wav;
+#showme %1, "%2";
+#line gag
+}
+
+#NOP devices
+#action {You access a%1portable point unit and note you have %2 license points and %3 combat points. Your private organization has %4 inter-organization cooperation points.
+}
+{
+#variable {lpoints} {%2};
+#variable {cpoints} {%3};
+#math {clpoints} {%2 - $clpoints};
+#math {ccpoints} {%3 - $ccpoints};
+mplay General/device/pointunit.ogg;
+#showme {%2 License Points.};
+#showme {%3 Combat Points.};
+#showme %4 inter-organization cooperation points;
+#showme {$clpoints license points and $ccpoints combat points since your  last check.};
+#var {clpoints} {$lpoints};
+#var {ccpoints} {$cpoints};
+#line gag;
+#class mvariables write games/world/toastsoft.net/mvariables.tin
+}
+#action {A %1 alliance %2 beeps, notifying you%3.} 
+{
+mplay General/Device/AllianceComputer@intmath{1d2}.ogg
+}
+#action {You carefully replace the film in%1camera.} 
+{
+mplay General/Device/LoadFilm.ogg
+}
+#action {A %1 beeps quietly, indicating to you that %2} 
+{
+mplay General/Device/NewPost@intmath{1d7}.ogg;
+#showme %2;
+#line gag
+}
+#action {You take a snapshot of%1} 
+{
+mplay General/Device/Snapshot@intmath{1d5}.og
+}
+#action {%1 takes a snapshot of%2} 
+{
+mplay General/Device/Snapshot@intmath{1d5}.ogg
+}
+#action {You turn {an|a} %1communicator on.} 
+{
+mplay General/device/CommActive.wav
+}
+#action {You turn a%1communicator off.} 
+{
+mplay General/device/CommInactive.wav
+}
+#action {You activate %1 flight control scanner.}
+{
+mplay General/Device/Activate2.ogg
+}
+#action {You deactivate %1 flight control scanner.}
+{
+mplay General/Device/Deactivate2.ogg
+}
+#action {You activate a %1 handheld planetary surveyor and begin scanning the area.}
+{
+mplay general/device/activate1.ogg;
+#line gag
+}
+#action {You press a small button on the %1 of %2 and watch as a bright energy field around you snaps out of existance.} 
+{
+mplay General/Device/ForceFieldSuitOff.ogg
+}
+#action {You press a small button on the %1 of %2 and watch as a bright energy field snaps into place around you, then slowly dims into a barely noticeable haze.}
+{
+mplay General/Device/ForceFieldSuitOn.wav
+}
+#action {A small handheld radio receiver beeps twice, indicating the detection of a radio transmission.}
+{
+mplay general/comm/RadioReceiver.ogg;
+#line gag
+}
+
+
+#NOP lore computer
+#action {A compact sparkly Lore computer beeps quietly, indicating that its TransLink tracking functionality has been activated.}
+{
+mplay general/lore/TrackedLore.ogg;
+#line gag
+}
+#action {You make a selection on a %1 Lore computer.}
+{
+mplay general/lore/lore.ogg;
+#line gag
+}
+#action {Your %1 Lore computer suddenly beeps quietly, indicating a new incoming file.} 
+{
+mplay General/Lore/Import.ogg
+}
+#action {Several short bleeps emit from a %1} 
+{
+mplay General/Lore/Print.ogg
+} 
+#action {Enter a name for the new file:} 
+{
+mplay General/Lore/Name.ogg;
+#line gag
+}
+#action {File "%1" exported.} 
+{
+mplay General/Lore/Export.ogg
+}
+#action {%1Via the TransLink network, the LoreTech device%2} 
+{
+#showme {the LoreTech device%2};
+mplay General/Lore/Track.ogg;
+#line gag
+}
+#action {LoreTech  Personal  Lore  Computer  -  [Main  Menu]}
+{
+Mplay general/lore/lore.ogg}
+
+
+#NOP misc
+#action {%1 dissolves into billions of constituent particles and disperses into a hitherto unnoticed breeze.}
+{
+mplay HostOut@intmath{1d3}.ogg
+}
+#action {Announcement: %1} 
+{
+mplay General/Misc/Announcement.ogg
+}
+#action {You pull a series of straps around yourself and securely buckle yourself into%1} 
+{
+mplay General/Misc/Buckle@intmath{1d3}.ogg;
+#line gag
+}
+#action {%1 pulls a series of straps around %2 and securely buckles %3 into%4} 
+{
+mplay General/Misc/Buckle@intmath{1d3}.ogg
+}
+#action {Those coordinates are occupied by this {starship|ship}.} 
+{
+mplay General/Misc/Cancel.ogg
+}
+#action {Praelor %1: %2, %3, %4}
+{
+#var {coord1} {%2};
+#var {coord2} {%3};
+#var {coord3} {%4};
+#showme $coord1 $coord2 $coord3: Praelor %1;
+#line gag
+}
+#action {%1 Drone %2: %3, %4, %5}
+{
+#var {coord1} {%3};
+#var {coord2} {%4};
+#var {coord3} {%5};
+#showme $coord1 $coord2 $coord3: %1 %2;
+#line gag
+}
+#sub {Current coordinates: %1} {%1}
+#action {The {ship|starship} is already moving.} 
+{
+mplay General/Misc/Cancel.ogg
+}
+#action {The ship must be on autopilot mode.} 
+{
+mplay General/Misc/Cancel.ogg
+}
+#action {Wait %1.}
+{
+mplay General/Misc/Cancel.ogg
+}
+#action {The starship must be on autopilot mode.} 
+{
+mplay General/Misc/Cancel.ogg
+}
+#action {The ship must be in MANUAL mode.} 
+{
+mplay General/Misc/Cancel.ogg
+}
+#action {The starship must be in MANUAL mode.} 
+{
+mplay General/Misc/Cancel.ogg
+}
+#action {The ship is already on autopilot.} 
+{
+mplay General/Misc/Cancel.ogg
+}
+#action {The ship is already on manual navigation.} 
+{
+mplay General/Misc/Cancel.ogg
+}
+#action {Those coordinates are too far away to establish a lock.} 
+{
+mplay General/Misc/Cancel.ogg
+}
+#action {Invalid coordinates. Range: (1, 1, 1) to (20, 15, 10).} 
+{
+mplay General/Misc/Cancel.ogg
+}
+#action {Invalid selection.} 
+{
+mplay General/Misc/Cancel.ogg
+}
+#action {You elect to discontinue searching.} 
+{
+mplay General/Misc/Cancel.ogg
+}
+#action {You can't go that way.} 
+{
+mplay General/Misc/CantGo@intmath{1d5}.ogg
+}
+#action {That exit appears to be blocked.}
+{
+mplay General/Misc/CantGo@intmath{1d5}.ogg
+}
+#action {You earn %1 credits%2} 
+{
+mplay General/Misc/Credits@intmath{1d4}.ogg
+}
+#action {You receive %1 credits%2} 
+{
+mplay General/Misc/Credits@intmath{1d4}.ogg
+}
+#action {You crumple %1 up and throw it away.} 
+{
+mplay General/Misc/Paper@intmath{1d3}.ogg
+}
+#action {%1 crumples %2 up and throws it away.} 
+{
+mplay General/Misc/Paper@intmath{1d3}.ogg
+}
+#action {%1 suddenly steps from the background.} 
+{
+mplay General/Misc/HostIn@intmath{1d3}.ogg
+}
+#action {%1 suddenly seems to disappear into the background.} 
+{
+mplay General/Misc/HostOut@intmath{1d3}.ogg
+}
+#action {I don't understand that.} 
+{
+mplay General/Misc/Command@intmath{1d10}.ogg
+}
+#action {You should stand up first.} 
+{
+mplay General/Misc/Command@intmath{1d10}.ogg
+}
+#action {You should probably stop taking cover behind %1 first.} 
+{
+mplay General/Misc/Command@intmath{1d10}.ogg
+}
+#action {You decide against it until you aren't floating around in space.} 
+{
+mplay General/Misc/Command@intmath{1d10}.ogg
+}
+#action {%1 [ [ ]Enter "yes" or "no"]} 
+{
+mplay general/misc/prompt.ogg
+}
+#action {[ [ ]Type lines of input; use %1.' to end or %2@abort' to abort the command.]} 
+{
+mplay general/misc/prompt.ogg
+}
+#action {You snatch %1 from the cold, cruel hands of space.} 
+{
+mplay General/Misc/SnatchArtifact@intmath{1d3}.ogg
+}
+#action {You release the buckle of your seatbelt, causing it to retract back into %1} 
+{
+mplay General/Misc/Unbuckle@intmath{1d3}.ogg;
+#line gag
+}
+#action {%1 releases the buckle of %2 seatbelt, causing it to retract back into %3} 
+{
+mplay General/Misc/Unbuckle@intmath{1d3}.ogg
+}
+#action {You begin to merrily float off into the great unknown.} 
+{
+mplay General/Device/JetStart.ogg;
+#line gag
+}
+#action {You arrive at your new coordinates.} 
+{mplay General/Device/JetEnd.ogg;
+#line gag
+}
+#action {[ [ ]Enter %1yes' or %2no']} 
+{
+mplay general/misc/prompt.wav
+}
+#action {[ [ ]Enter "yes" or "no"]} 
+{
+mplay general/misc/prompt.wav
+}
+#action {%1 gestures for you to join %2 group, which you promptly do.} 
+{
+mplay general/misc/joins.ogg
+}
+#action {You gesture towards %1, who promptly joins your group.} 
+{
+mplay general/misc/Joins.ogg
+}
+#action {%1You indicate to your group members that you no longer wish for them to follow you.%2} 
+{
+mplay general/misc/disband.ogg
+}
+#action {* indicates that %1 no longer wishes you to follow %2.%3} 
+{
+mplay general/misc/disband.ogg
+}
+#action {%1 leaves your group.%2} 
+{
+mplay general/misc/disband.ogg
+}
+#action {You hear a loud buzzing sound, indicating somebody is at the door.} 
+{mplay ship/misc/bell@intmath{1d2}.ogg;
+#line gag
+}
+#action {The door opens with a soft hiss and admits you into the room.} {mplay General/Misc/dooropenstateroom.ogg;
+#line gag
+}
+#action {You press a large %1 reset button on a %2 starship simulator.} 
+{
+mplay General/Misc/SFBeep@intmath{1d15}.ogg
+}
+#action {You walk face first into a silver door.} 
+{
+mplay General/Misc/CantGo@intmath{1d5}.ogg
+}
+#action {%1A small lock destroying explosive explodes with unexpected force, sending a shockwave slamming into you%2} 
+{
+mplay Ship/Misc/HatchBomb.ogg
+}
+#action {%1You carefully place %2 along the edge of %3 hatch. You press a small button and step back as the charge begins its 30 second countdown%4} 
+{
+mplay Ship/Misc/HatchBombPlace.ogg
+}
+#action {%1You hear a strange sound coming from the airlock%2} 
+{
+mplay Ship/Misc/HatchBombPlaceHere.ogg
+}
+#action {%1You hear what sounds like an explosion coming from the general area of the airlock%2} 
+{
+mplay Ship/Misc/HatchBombHere.ogg
+}
+#action {%1You hear a deep rumbling as the docking bay door opens%2} 
+{
+mplay Ship/Misc/DockingBayDoorOpen.ogg
+}
+#action {%1"Docking complete."%2} 
+{
+mplay Ship/Misc/DockingBayDoorClose.ogg
+}
+#action {%1You hear a deep rumbling as the docking bay door closes%2} 
+{
+mplay Ship/Misc/DockingBayDoorClose.ogg
+}
+#action {%1A %2 door to the %3 slides closed with a hiss%4} 
+{
+mplay Ship/Misc/DoorCloseStateroom.ogg
+}
+#action {%1A %2 door to the %3 slides open with a hiss%4} 
+{
+mplay Ship/Misc/DoorOpenStateroom.ogg
+}
+#action {%*Next Promotion: %1 [%2]} {#var {currentrankings} {%1};#var {neededrankings} {%2};#math {prioritycount} {$currentrankings / 10};#math {bulkcount} {$currentrankings /5};#math {totalrankings} {$neededrankings - $currentrankings};#showme {You need $prioritycount priority deliveries and $bulkcount bulk deliveries until your next promotion.}}
+
+#NOP planetary mining
+#action {A large planetary mining drone beeps quietly%1} 
+{
+mplay General/mining/mineralStore.ogg;
+#line gag
+}
+#action {A recorded voice on a large planetary mining drone whispers, "No minerals of value could be found. Please scan another area."} 
+{
+mplay General/mining/NoMinerals.ogg;
+#line gag
+}
+#action {You press a button on a large planetary mining drone. A recorded voice lightly whispers, "Scanning for minerals of value. Please wait."} 
+{
+mplay General/mining/ScanLoop.ogg;
+#line gag
+}
+#action {A recorded voice on a large planetary mining drone whispers, "A pocket of valuable minerals has been detected." You set it on the ground and %1} 
+{
+mplay General/mining/mineralsdetected.ogg;
+#line gag
+}
+#action {The transport, wasting no time, lifts off and%1} 
+{
+mplay General/mining/transport.ogg;
+#line gag
+}
+#sub {[Mining Site %1; Mining Tunnel]} {Mining Tunnel}
+#sub {%1 ^ %2} {%1 %2}
+#gag {(%1 seconds roundtime.)}
+#sub  {^There is a large %1 stenciled on the side of the drone.} {%1}
+#sub {^A small screen indicates that it has stored %1 minerals. It appears
+to be digging.} {%1, Active}
+
+#NOP ship airlock
+#action {The hatch acknowledges your key and unlocks, allowing you to %1 through.} 
+{
+mplay Ship/Misc/AirlockEnter@intmath{1d2}.ogg;
+#line gag
+}
+#action {You %1 through the unlocked hatch of %2} 
+{
+mplay Ship/Misc/AirlockEnter@intmath{1d2}.ogg;
+#line gag
+}
+#action {You %1 through the broken hatch of %2} 
+{
+mplay Ship/Misc/AirlockEnter@intmath{1d2}.ogg;
+#line gag
+}
+#action {You follow %1 into the ship%2} 
+{
+mplay Ship/Misc/AirlockEnter@intmath{1d2}.ogg;
+#line gag
+}
+#action {%1 drags you into the ship%2} 
+{
+mplay Ship/Misc/AirlockEnter@intmath{1d2}.ogg;
+#line gag
+}
+#action {%1 arrives from outside.} 
+{
+mplay Ship/Misc/AirlockEnter@intmath{1d2}.ogg
+}
+#action {%1 {float|floats} out of the ship into space.} 
+{
+mplay Ship/Misc/AirlockExit@intmath{1d2}.ogg
+}
+#action {%1 out of the ship.} 
+{
+mplay Ship/Misc/AirlockExit@intmath{1d2}.ogg
+}
+#action {A chime sounds, indicating that somebody has entered the airlock.} 
+{
+mplay Ship/Misc/Bell@intmath{1d2}.ogg;
+#line gag
+}
+#gag {You press a large button marked CYCLE.}
+#action {%*The computer flashes a message next to the airlock cycle button saying, "Beginning cycling."} 
+{
+mplay Ship/Comm/PA@intmath{1d9}.ogg;
+mplay ship/misc/AirlockCycleStart.ogg;
+#showme {Commence airlock cycle.};
+#line gag
+}
+#action {%*The computer flashes a message next to the airlock cycle button saying, "Cycling complete."}
+{
+mplay Ship/Comm/PA@intmath{1d9}.ogg;
+#showme {Cycling complete.};
+#line gag
+}
+#action {%*A small light on the airlock control panel turns from %1 to %2. The faint hiss of air can be heard {entering|exiting} the airlock.} 
+{
+mplay Ship/Misc/Airend.ogg;
+#line gag
+}
+#action {The hiss of air slowly fades away into nothingness, and the %1 light becomes %2.} 
+{
+mplay Ship/Misc/AirEnd.ogg;
+#line gag
+}
+#action {Some lovely elevator music begins playing as the airlock cycles%1} 
+{
+mplay Music/@intmath{1d64}.ogg;
+#line gag
+}
+#gag {Some lovely elevator music abruptly stops playing as the airlock ceases cycling%1}
+
+#NOP ship scanning
+#action {Coordinates: (%1, %2, %3)}
+{
+#variable {coord1} {%1};
+#variable {coord2} {%2};
+#variable {coord3} {%3};
+}
+#macro {\cl} {#showme $coord1 $coord2 $coord3
+}
+#action {Hull Damage: %1}
+{
+#macro {\ch} {#showme {%1 hull.}};
+#line gag
+}
+#action {Average Component Damage: %1}
+{
+#macro {\ck} {#showme {%1 components.}};
+#line gag
+}
+#action {Occupancy: %1}
+{
+#macro {\co} {#showme {Occupants: %1}};
+#line gag
+}
+#action {Weapons: %1}
+{
+#macro {\cw} {#showme {%1 weapons.}};
+#line gag
+}
+#action {^Power: %1$}
+{
+#macro {\cp} {#showme {%1 power.}};
+#line gag
+}
+#action {Cargo: %1}
+{
+#macro  {\a} {#showme {%1}};
+#line gag
+}
+#action {Distance: %1}
+{
+#variable {dist} {%1};
+#macro {\cu} {#showme {$dist units}};
+#if {$dist <= 1} {mplay general/misc/beep@intmath{1d29}.ogg}
+}
+#action {Distance: 1}
+{
+mplay ship/combat/beep-01.wav
+}
+
+#NOP ship combat
+#alias {cha}
+{
+#variable {destroyed} {0};
+#variable {ehits} {0};
+#variable {debkills} {0};
+#showme {All hits and kills cleared.}
+}
+#alias {sha}
+{
+#showme {$ehits hits.};
+#showme {$destroyed ships destroyed.};
+#showme {$debkills debris destroyed.}
+}
+#action {A blinding flash of light suddenly permeates the entire area. You hear a pounding sound on the hull, as if the starship were a drum being relentlessly pounded on.}
+{
+mplay Ship/Combat/YouHit@intmath{1d6}.ogg;
+#line gag
+}
+
+#NOP ships?
+#action {A mechanical groan permeates the room as a heavy blast door suddenly begins to
+move aside.}
+{
+mplay ship/misc/BlastDoorOpen@intmath{1d2}.ogg;
+#line gag
+}
+#action {A mechanical groan permeates the room as a heavy blast door begins to slide into
+view.}
+{
+mplay ship/misc/BlastDoorOpen@intmath{1d2}.ogg;
+#line gag
+}
+#gag {A mechanical groan gradually subsides as the blast door disappears from view,
+allowing free access to the exit %1.}
+#action {A mechanical groan gradually subsides as the blast door's locking mechanisms
+click into place with a dull thud, effectively blocking the exit %1.}
+{
+mplay ship/misc/BlastDoorClose@intmath{1d3}.ogg;
+#line gag
+}
+
+#action {%1  "debris destroyed."} 
+{
+mplay Ship/Combat/DebrisDestroyed.ogg;
+#math {debkills} {$debkills + 1}
+#line gag}
+#action {%1 announces, "target destroyed."} 
+{
+mplay Ship/Combat/OtherDestroyed@intmath{1d8}.ogg;
+#math {destroyed} {$destroyed + 1};
+#math {ehits} {$ehits + 1};
+#line gag
+}
+#action {Target:%1} 
+{
+mplay Ship/Combat/LockedOnOther.ogg
+}
+#action {%1has a lock on this starship.%2} 
+{
+mplay Ship/Combat/LockedOnYou.ogg
+}
+
+#NOP debris
+#action {%1 "%2has been destroyed."} 
+{
+mplay Ship/Combat/OtherDestroyed@intmath{1d4}.ogg
+}
+#action {%1 reports that%2has been destroyed.} 
+{
+mplay Ship/Combat/OtherDestroyed@intmath{1d4}.ogg
+}
+#action {%1 "%2 {is|are} locking onto %3."} 
+{
+#var {ShipTarget} {%3};
+mplay Ship/Computer/Keyboard@intmath{1d15}.ogg;
+#showme {%2 locked on %3.};
+#line gag;
+}
+#action {%1has fired at%2.} 
+{
+mplay Ship/Combat/OtherFired@intmath{1d12}.ogg
+}
+#action {A loud klaxon sounds as red lights flash overhead.} 
+{
+mplay Ship/Combat/RedStart@intmath{1d2}.ogg;
+#line gag
+} 
+#action {This starship has been hit by%1.} 
+{
+#sub {hit by %1};
+mplay Ship/Combat/YouHit@intmath{1d5}.ogg;
+#line gag
+}
+#action {The room is flooded with a brilliant %1 light as lasers %2impact the hull.} 
+{
+mplay Ship/Combat/YouHit@intmath{1d5}.ogg
+}
+#action {The ship rocks slightly as it's hit by%1.} 
+{
+mplay Ship/Combat/YouHit@intmath{1d5}.ogg
+}
+#action {The ship jerks slightly as its turrets are fired.} 
+{
+mplay Ship/Combat/Laser@intmath{1d31}.ogg;
+#line gag
+}
+#action {The room is filled with%1as the laser turrets are fired.} 
+{
+mplay Ship/Combat/Laser@intmath{1d31}.ogg;
+#line gag
+}
+#action {The room is bathed in brilliant red and green light as the ship's laser turrets fire alternating patterns of festive color.}
+{
+mplay ship/combat/altlaser@intmath{1d15}.wav;
+#line gag
+}
+#action {
+{Turret|Turrets} %1 locking onto empty space.}
+{
+mplay general/misc/error.ogg
+}
+#action {%*"I have completed the repair of %1."}
+{
+mplay ship/computer/programcomplete.ogg;
+mplay Ship/Computer/Announce@intmath{1d10}.ogg;
+#line gag}
+#sub {%*"%1 will be completely repaired in approximately %2."} {"%2 until repair of %1."}
+#action {%* Bardenium: %1}
+{
+#var {BardCount} {%1}
+}
+#action {%*"Bardenium {cannon|Cannons} %1 locked on %2. Firing."} 
+{
+#math {BardCount} {$BardCount - $CannonCount};
+#if {$BardCount <= 0} 
+{
+mplay music/watched.wav};
+#showme {"Firing on %2."};
+#line gag
+}
+#action {You hear a thunk as a chunk of charged weapons-grade bardenium is fired from the ship's cannons.} 
+{
+mplay Ship/Combat/Cannon@intmath{1d9}.ogg;
+#line gag}
+#action {%1 announces, "Hit on%1"} 
+{
+mplay Ship/Combat/OtherHit@intmath{1d5}.ogg;
+#math {ehits} {$ehits + 1};
+#line gag
+}
+#action {%1 announces, "Bardenium Cannon %1 locked on %2"} 
+{
+mplay Ship/Computer/Keyboard@intmath{1d15}.ogg;
+#showme {Cannon%1locked on%2.};
+#line gag
+}
+#action {You hear a gentle hum as the weapons power up.} 
+{
+mplay Ship/Combat/WeaponspowerOn.ogg;
+#line gag
+}
+#action {You hear the gentle hum begin to fade as the weapons power down.} 
+{
+mplay Ship/Combat/WeaponsOpowerff.ogg;
+#line gag
+}
+#action {A loud klaxon sounds as red lights continue to flash overhead.} 
+{
+mplay Ship/Combat/RedCont@intmath{1d34}.ogg;
+#line gag
+}
+#action {You feel a mighty shaking as something seemingly large impacts the hull.} 
+{
+mplay Ship/Combat/YouHit@intmath{1d6}.ogg;
+#line gag
+}
+#action {Available Cannons: %1}
+{
+#Var {CannonCount} {%1}
+}
+#action {You hear several scraping sounds as bardenium is transferred from the ship's storage to the cannons.} 
+{
+#math {BardCount} {$CannonCount * 10};
+mplay Ship/Combat/CannonReload.ogg;
+#line gag
+}
+#action {%1"Partial hit on%2} 
+{
+mplay Ship/Combat/OtherHit@intmath{1d5}.ogg;
+mplay Ship/Combat/Partial.ogg;
+#showme {Partial};
+#math {ehits} {$ehits + 1};
+#line gag
+}
+#action {The ship shudders briefly as a reflected laser blast impacts the hull.} 
+{
+mplay Ship/Combat/LaserReflected.ogg;
+#line gag
+}
+#action {You hear a high-pitched squeal as the starship emits a sustained long-range laser burst.} 
+{
+mplay Ship/Combat/LaserSqueal@intmath{1d19}.ogg;
+#line gag
+}
+#action {You hear a mechanical whine as the laser reflectors reorient themselves.} 
+{
+mplay Ship/Combat/Reflectors@intmath{1d3}.ogg;
+#line gag
+}
+#action {The ship wrenches violently as the wavewarp drive interacts with stellar material.}
+{
+mplay Ship/Combat/SolarDebris.ogg;
+#line gag
+} 
+#action {The ship shudders violently as solar material impacts the hull.} 
+{
+mplay Ship/Combat/SolarDebris.ogg;
+#line gag
+}
+#action {The ship rocks violently as it comes into contact with %1} 
+{
+mplay Ship/Combat/YouHit@intmath{1d6}.ogg
+} 
+#action {You hear a thunk as an interdictor is launched.} 
+{
+mplay ship/combat/intradictor.ogg;
+#line gag
+}
+#action {You hear a thunk as a blockade is launched.} 
+{
+mplay ship/combat/BlockadeSingle.ogg;
+#line gag
+}
+#action {You hear several thunks as blockades are launched.} 
+{
+mplay ship/combat/blockademultiple.ogg;
+#line gag
+}
+#action {You hear a thud as a proximity weapon is launched into space.}
+{
+mplay ship/combat/proximityweapon.ogg;
+#line gag
+}
+#action {You hear several rumbling sounds as the starship explodes around you.} 
+{
+mplay Ship/Combat/YouDestroyed@intmath{1d3}.ogg;
+#line gag
+}
+#action {%1The target has moved from the locked coordinates."} 
+{
+mplay Ship/Combat/lostlock.wav;
+#showme {Lock lost.};
+#line gag
+}
+#action {You hear a popping sound as a disarmament pulse is fired.}
+{
+mplay Ship/Combat/disarm.ogg
+}
+#action {You hear a crackling sound as an immobilization pulse is fired.} 
+{
+mplay Ship/Combat/immob.ogg
+}
+#action {You hear an oscillating discord of electrical energy reverberating off the bulkheads as an electomagnetically coupled energy packet is expelled from the starship's CDP launcher.} 
+{
+mplay Ship/Combat/disrupt.wav
+}
+#action {You hear a sharp twang sound as a sensor interruption pulse is fired.} 
+{
+mplay Ship/Combat/interrupt.ogg
+}
+#action {%1"Disarmament pulse is locking%2..."} 
+{
+mplay Ship/Combat/pulselock@intmath{1d2}.wav
+}
+#action {%1"Immobilization pulse is locking%2..."} 
+{
+mplay Ship/Combat/pulselock@intmath{1d2}.wav
+}
+#action {%1"Sensor interruption pulse is locking%2..."} 
+{
+mplay Ship/Combat/pulselock@intmath{1d2}.wav
+}
+#action {%1"Computer disruption pulse is locking%2..."} 
+{
+mplay Ship/Combat/pulselock@intmath{1d2}.wav
+} 
+#action {A high-pitched, wobbling alarm sounds as the hull begins breaking up around you.} 
+{
+mplay Ship/Combat/YouDestroyed@intmath{1d3}.wav;
+#line gag
+}
+#action {You are suddenly seized by a powerful EM field and deposited into an escape pod.} 
+{
+mplay Ship/Combat/EMField.wav
+}
+#action {The experimental wormhole drive suddenly kicks to life, creating a high-pitched mechanical whine that fills the enclosed space.} 
+{
+mplay Ship/Misc/EscapePodWormHoleJump1.wav
+}
+#action {The sound of strained components echos throughout the pod. It sounds as if it's going to break apart altogether.} 
+{
+mplay Ship/Misc/MetalStress.wav
+}
+#action {With one final burst of acceleration, the pod emerges from the wormhole and begins accelerating through space under the power of the relativity drive.} 
+{
+mplay Ship/Misc/EscapePodWormHoleJump2.wav
+}
+#action {You feel mild acceleration as the pod descends.} 
+{
+mplay Ship/Misc/EscapePodDescend.wav
+}
+
+#NOP ship computer
+#action {Objects%1Direction%2Lightyears%3Coordinates%4} 
+{
+mplay Ship/Computer/LRScan@intmath{1d4}.ogg
+}
+#action {%1 announces, "Scans reveal the debris to be a life form."} 
+{
+mplay Ship/Misc/SalvageLifeform.ogg;
+#delay {1} {mplay SalvageLifeForm.wav};
+#line gag
+}
+#action {%* "%* was unable to continue due to sensor interference."}
+{
+mplay Ship/Computer/Anomaly.ogg;
+#showme {"NAVI was unable to continue due to sensor interference."};
+#line gag
+}
+#action {%1 "I am beginning the repair of %2. Estimated time to completion: %3."} 
+{#showme {%1 "%3 until repair of %2."};
+mplay ship/computer/RepairStart.wav;
+#line gag}
+#action {%1 flickers into existence and announces, "%2 been detected in the sector."}
+{
+mplay Ship/Computer/announce@intmath{1d10}.ogg;
+#system say -v oliver -r 450 %2 been detected in the sector;
+#line gag
+}
+#action {%1 flickers into existence and reports, "%2"}
+{
+mplay Ship/Computer/report@intmath{1d4}.ogg;
+#showme {%1 "%2"};
+#line gag
+}
+#action {%1 flickers into existence and announces, "%2"}
+{
+mplay Ship/Computer/announce@intmath{1d10}.ogg;
+#showme {%1 "%2"};
+#line gag
+}
+#sub {%* the starship is headed for %1 (%2). The computer estimates approximately %3 until arrival at the destination at current relativity speed.} {%3 until arrival at %1, (%2)}
+#action {The computer announces, %2} 
+{
+mplay Ship/Computer/Announce@intmath{1d10}.ogg;
+#showme {%2};
+#line gag
+}
+#sub {the starship is headed for %1. The computer estimates approximately %2 until arrival at the destination at current relativity drive speed.} {%2 until arrival at %1.}
+#sub {The starship is headed for %1, %2, %3. The computer estimates approximately %4 until arrival at the destination at current relativity drive speed.}
+{%4 until arrival at %1, %2, %3.}
+#action {The computer reports %2}
+{
+mplay Ship/Computer/report@intmath{1d4}.ogg;
+#showme {%2};
+#line gag
+}
+#action {%1presses a button on a navigation console and examines the display.} 
+{
+mplay Ship/Computer/Keyboard@intmath{1d15}.ogg
+}
+#action {A destination appears on the ship's navigation controls:%1} 
+{
+mplay Ship/Computer/Keyboard@intmath{1d15}.ogg
+}
+#action {Starship Status:} 
+{
+mplay Ship/Computer/display@intmath{1d2}.ogg
+}
+#action {There are no damaged components.} 
+{
+mplay Ship/Computer/nodamage.ogg;
+#line gag
+}
+#action {Charge Readout:} 
+{
+mplay Ship/Computer/Display@intmath{1d2}.ogg
+}
+#action {%*You hear the sounds of cargo being transferred.} 
+{
+mplay Ship/Misc/TransferStart.ogg;
+#line gag
+}
+#action {Total Cargo:%1} 
+{
+mplay Ship/Computer/Display@intmath{1d2}.ogg
+}
+#action {There is nothing in the cargo hold.%1} 
+{
+mplay Ship/Computer/Display@intmath{1d2}.ogg
+}
+#action {Starship Security Status:} 
+{
+mplay Ship/Computer/display@intmath{1d2}.ogg
+}
+#action {Starship Weapon Information} 
+{
+mplay Ship/Computer/display@intmath{1d2}.ogg
+}
+#action {Weapon Configuration:} 
+{
+mplay Ship/Computer/display@intmath{1d2}.ogg
+}
+#action {You input some commands into a console and access the starship's service record.} 
+{
+mplay Ship/Computer/display@intmath{1d2}.ogg
+}
+#action {%*announces, "Mission objective has been completed in approximately%1. Return to base."} 
+{
+mplay Music/@intmath{1d64}.ogg
+}
+#action {You press a button and quickly retrieve a printout of the ship's%1.} 
+{
+mplay Ship/Computer/Print.ogg
+}
+#nop start here
+#action {%*You hastily retrieve it before it falls to the floor.} 
+{
+mplay /ship/computer/ScanRetrieved.wav
+}
+#action {Starship Damage:} 
+{
+mplay Ship/Computer/display@intmath{1d2}.ogg;#line gag
+}
+#action {Weapon Status:} 
+{
+mplay Ship/Computer/display@intmath{1d2}.ogg
+}
+#sub {Current Coordinates: %1} {%1}
+#action {^The starship has entered an H II region. Caution is advised.$}
+{
+mplay ship/computer/nebula.wav
+}
+
+#NOP ship misc
+#action {A small light near the airlock of the %1 "%2" flashes briefly.}
+{
+mplay Ship/Misc/ShipLights.wav
+}
+#action {You press a button on a "%1" key.}
+{
+mplay Ship/Misc/SKey.wav;
+#line gag
+}
+#action {%1 presses a button on a "%2" key.}
+{
+mplay Ship/Misc/SKey.wav
+}
+#action {You flick a switch to%1mode.} 
+{
+mplay Ship/Misc/Switch.wav
+}
+#action {You press a conveniently placed button on the wall.} 
+{
+mplay General/Misc/SFBeep@intmath{1d15}.wav
+}
+#action {You press a large * button.} 
+{
+mplay General/Misc/SFBeep@intmath{1d15}.ogg
+}
+#action {You press a large button marked CYCLE.} 
+{
+mplay General/Misc/SFBeep@intmath{1d15}.ogg
+}
+#action {You press a large %1 reset button on a %2 starship simulator.} 
+{
+mplay General/Misc/SFBeep@intmath{1d15}.ogg
+}
+#action {You lift a large panel and crawl through it, emerging in the starship's network of ducts. Being the %1 that you are, you replace the panel behind you.} 
+{
+mplay Ship/Misc/EnterDucts@intmath{1d2}.ogg
+}
+#action {A stream of light floods the area as %1 crawls in through a large panel.} 
+{
+mplay Ship/Misc/EnterDucts@intmath{1d2}.ogg
+}
+#action {%1 lifts a large panel and crawls through it.} 
+{
+mplay Ship/Misc/EnterDucts@intmath{1d2}.ogg
+}
+#action {You lift a small panel and crawl through.} 
+{
+mplay Ship/Misc/ExitDucts@intmath{1d2}.ogg
+}
+#action {%1 crawls in through a large panel.} 
+{
+mplay Ship/Misc/ExitDucts@intmath{1d2}.ogg
+}
+#action {You flip a heavy switch,%1} 
+{
+mplay Ship/Misc/Lever@intmath{1d5}.ogg
+}
+#action {You pull a small lever toward yourself, deactivating the ship's systems.} 
+{
+mplay Ship/Misc/Lever@intmath{1d5}.ogg;
+#line gag
+}
+#action {You push a small lever away from you, activating the ship's systems.} 
+{
+mplay Ship/Misc/Lever@intmath{1d5}.ogg;
+#line gag
+}
+#action {%1 pushes a small lever away from %2, activating the ship's systems.} 
+{
+mplay Ship/Misc/Lever@intmath{1d5}.ogg
+}
+#action {%1 pulls a small lever toward %2, deactivating the ship's systems.} 
+{
+mplay Ship/Misc/Lever@intmath{1d5}.ogg
+}
+#action {A small console nearby flashes for your attention. A quick glance reveals that you have new mail waiting for you at%1.} 
+{
+mplay Ship/Misc/NewMail@intmath{1d2}.ogg
+}
+#action {You feel a mild vibration as the starship's asteroid anchor buries itself into the asteroid's surface.} 
+{
+mplay general/asteroid/anchorstart.ogg;
+#line gag
+}
+#action {%1Lifting anchor and establishing standard dock%2} 
+{
+mplay general/asteroid/anchorend.ogg;
+#line gag
+}
+#action {You instruct the computer to begin scanning for debris.} 
+{
+mplay Ship/Computer/Scan@intmath{1d4}.ogg;
+#line gag
+}
+#action {You hear a mechanical whine as the ship's solar panels return to their previous positions along the hull.} 
+{
+mplay Ship/Misc/PanelsOff.ogg;
+#line gag
+}
+#action {You hear a mechanical whine as the ship's solar panels orient themselves toward a star.} 
+{
+mplay Ship/Misc/PanelsOn.ogg;
+#line gag
+}
+#action {You suddenly become aware of a decrease in noise as the ship's systems shut down, leaving you in complete silence.} 
+{
+mplay Ship/Misc/PowerOff@intmath{1d5}.ogg;
+#line gag
+}
+#action {You notice a faint hum begin to emanate from nowhere in particular as the starship's systems begin to power up.} 
+{
+mplay Ship/Misc/PowerOn@intmath{1d3}.ogg;
+#line gag
+}
+#action {You hear several clinking sounds as the ship is repaired.} 
+{
+mplay Ship/combat/Repair@intmath{1d8}.ogg;
+#line gag
+}
+#action {You hear a deafening booming sound as repairs to the ship proceed.} 
+{
+mplay Ship/combat/Repair@intmath{1d8}.ogg;
+#line gag
+}
+#action {You hear a shrill screeching sound as repair drones drag replacement components across the hull.} 
+{
+mplay Ship/combat/Repair@intmath{1d8}.ogg;
+#line gag
+}
+#action {You hear a buzzing sound from the hull as repairs continue.} 
+{
+mplay Ship/combat/Repair@intmath{1d8}.ogg;
+#line gag
+}
+#action {You hear an electrical zapping sound as repairs to the ship continue.} 
+{
+mplay Ship/combatRepair@intmath{1d8}.ogg;
+#line gag
+}
+#action {You hear a loud clang as robotic arms seize the ship and transport it to the garage.} 
+{
+mplay Ship/Misc/Garage.ogg;
+#line gag
+}
+#action {You hear a loud clang as robotic arms seize the ship and transport it to the landing pad.} 
+{
+mplay Ship/Misc/LandingPad.ogg;
+#line gag
+}
+#action {You hear a thunk as a salvaging line is deployed into space. You watch as the line slowly winds its way to a piece of debris, projects an energy net around it and begins to slowly make its way back to the ship.} 
+{
+mplay Ship/Misc/Salvage@intmath{1d3}.ogg;
+#line gag
+}
+#action {You begin transferring debris to the spaceport.} 
+{
+mplay Ship/Misc/TransferStart.ogg;
+#line gag
+}
+#action {You hear the bustle of activity from the ship's cargo hold.} 
+{
+mplay Ship/Misc/Transfer@intmath{1d3}.ogg;
+#line gag
+}
+#action {The noises coming from the storage room gradually cease until they can be heard no more.} 
+{
+mplay Ship/Misc/TransferEnd.ogg;
+#line gag
+}
+#action {%*The sounds cease as the cargo transfer is complete.
+}
+{
+mplay Ship/Misc/TransferEnd.ogg;
+#line gag
+}
+#action {You hear several loud thuds as cargo is transferred from the ship.} 
+{
+mplay Ship/Misc/TransferStart.ogg;
+#line gag
+}
+#action {A heavy blast door suddenly moves aside%1} 
+{
+mplay "ship/misc/blast door open@intmath{1d2}.ogg"
+}
+#action {A heavy blast door suddenly slams shut%1} 
+{
+mplay "ship/misc/blast door close@intmath{1d2}.ogg"
+}
+#action {This ship transmits%1} 
+{
+mplay Ship/Comm/Sector.ogg
+}
+#action {This ship broadcasts%1} 
+{
+mplay Ship/Comm/Broadcast.ogg
+}
+#action {Via general sector communication, %1} 
+{
+mplay Ship/Comm/Sector.ogg
+}
+#action {You hear a thunk as a video probe is launched.} 
+{
+mplay Ship/Misc/VideoProbe.ogg
+}
+#action {%1the debris to be a lifeform%2} 
+{
+mplay Ship/Misc/SalvageLifeform.ogg;
+#delay {1} {mplay SalvageLifeForm.wav};
+#line gag
+}
+#action {%1A fuzzy creature, appearing momentarily dazed, disengages itself from %2.%3} 
+{
+mplay fuzzy/fuzzyhere.ogg
+}
+
+#NOP ship movement
+#action {You notify flight control of your desire to %1.} 
+{
+mplay ship/misc/commchirp@intmath{1d3}.ogg;
+#line gag
+}
+#action {A voice comes over the speaker and says, "%1"} 
+{
+mplay ship/misc/commchirp@intmath{1d3}.ogg;
+ #showme {%1};
+#line gag
+}
+#action {You begin the %1 sequence.} 
+{
+mplay General/Misc/SFBeep@intmath{1d15}.wav;
+ #line gag
+}
+#action {That space is occupied.} 
+{
+mplay ship/move/samespace.ogg} 
+#action {You press a button to cancel the current autopilot program.} 
+{
+mplay General/Misc/SFBeep@intmath{1d15}.wav;
+mplay Ship/Misc/Background@intmath{1d5}.ogg
+}
+#action {The%1has jumped into the sector.} 
+{
+mplay Ship/Move/EnterSector@intmath{1d2}.ogg
+}
+#action {The%1has entered the sector.} 
+{
+mplay Ship/Move/EnterSector@intmath{1d2}.ogg
+}
+#action {The%1has exited from%2.} 
+{
+mplay Ship/Move/EnterSector@intmath{1d2}.ogg
+}
+#action {The%1has left the sector.} 
+{
+mplay Ship/Move/ExitSector@intmath{1d2}.ogg
+}
+#action {The%1has entered Jumpgate to%2.} 
+{
+mplay Ship/Move/ExitSector@intmath{1d2}.ogg
+}
+#action {The%1has entered Mission Jumpgate.} 
+{
+mplay Ship/Move/ExitSector@intmath{1d2}.ogg
+}
+#action {%1rises smoothly off the ground and hovers for a brief moment before rapidly accelerating towards space.} 
+{
+mplay Ship/Move/OtherLaunch@intmath{1d3}.ogg
+}
+#action {The deck beneath you vibrates slightly as the relativity drive begins accelerating the starship through space.} 
+{
+#variable {ShipMove} {1};
+mplay Ship/Move/Accelerate.ogg;
+#line gag
+}
+#action {The sounds of the relativity drive slowly cease as the starship comes to a halt.} 
+{
+#variable {ShipMove} {0};
+mplay Ship/Move/Decelerate.ogg;
+#line gag
+}
+#action {The sound of the relativity drive echoes through the room as it propels the ship towards space.} 
+{
+mplay Ship/Move/YouLaunch@intmath{1d6}.ogg;
+#line gag
+}
+#action {The sounds of the relativity drive calm as the starship completes its final maneuver into space.} 
+{
+mplay General/Misc/SFBeep@intmath{1d15}.wav;
+mplay Ship/Misc/Background@intmath{1d5}.ogg;
+#line gag
+}
+#action {You feel mild acceleration as the ship%1} 
+{
+mplay Ship/Move/YouLanding@intmath{1d2}.ogg;
+#line gag
+}
+#action {You hear a deep hum as the starship begins an intrasector subwarp.} 
+{
+mplay Ship/Move/Subwarp.ogg;
+#line gag
+}
+#gag {The starship begins vibrating violently as the hum picks up in intensity.}
+#action {The vibration diminishes as the starship completes its subwarp.} 
+{
+mplay General/Misc/SFBeep@intmath{1d15}.wav;
+mplay Ship/Misc/Background@intmath{1d5}.ogg;
+#line gag
+}
+#action {You hear a sharp whine as the starship begins an intrasector slip.} 
+{
+mplay Ship/Move/Slip.ogg;
+#line gag
+}
+#gag {The starship shudders beneath your feet. It feels like the hull is breaking apart around you.}
+#action {With a sharp lurch, the starship completes its intrasector slip.} 
+{
+mplay General/Misc/Beep@intmath{1d10}.wav;
+mplay Ship/Misc/Background@intmath{1d5}.ogg;
+#line gag
+}
+#action {You hear a low rumbling sound as the wormhole drive opens a wormhole.} 
+{
+mplay Ship/Move/FTL@intmath{1d4}.ogg;
+#line gag
+}
+#gag {The starship vibrates violently as it nears the wormhole's event horizon.}
+#gag {A bright flash of blue light floods the room as the starship travels through the wormhole.}
+#action {The bright light vanishes as the starship emerges at the other side of the wormhole.} 
+{
+mplay General/Misc/Beep@intmath{1d29}.wav;
+mplay Ship/Misc/Background@intmath{1d5}.ogg;
+#line gag
+}
+#action {You notice a bright flash of light%1a starship must be coming in%2} 
+{
+mplay Ship/Move/OtherLanding@intmath{1d3}.ogg;
+#line gag
+}
+#action {You feel a mild vibration as the ship nears the active jumpgate.} 
+{
+mplay Ship/Move/Accelerate.ogg;
+#line gag
+}
+#action {You feel the sudden pull of acceleration as the starship's relativity drive kicks in, hurling you through the gate's event horizon.} 
+{
+mplay Ship/Move/Jumpgate@intmath{1d4}.ogg;
+#line gag
+}
+#gag {The windows automatically dim as gate after gate becomes visible, each causing a brilliant flash of light as it redirects the wormhole.}
+#gag {You are suddenly jarred as the ship begins rapid deceleration.}
+#action {The experience abruptly ends as the starship exits from the companion jumpgate and the relativity drive takes over to slow the ship to a stop.} 
+{
+mplay General/Misc/Beep@intmath{1d29}.ogg;
+mplay Ship/Misc/Background@intmath{1d5}.ogg;
+#line gag
+}
+#action {You detect a faint rumbling as the starship begins to orient toward another ship.} 
+{
+mplay Ship/Move/RingStart.ogg
+}
+#action {You hear a soft clang as another ship's docking ring comes into contact with the hull.} 
+{
+mplay Ship/Move/RingEnd.ogg
+}
+#action {The starship rocks gently as the docking ring comes into contact with another starship.} 
+{
+mplay Ship/Move/RingRemove.ogg
+}
+#action {The whine of strained components echos throughout the area as the starship struggles to haul the asteroid.} 
+{
+mplay Ship/Move/Haul.ogg;
+#line gag
+}
+#action {You hear a gentle pulsing sound as the starship begins an intrasector wavewarp.} 
+{
+mplay Ship/Move/wavewarp@intmath{1d2}.ogg;
+#line gag
+}
+#gag {The starship shudders beneath your feet as it continues propelling itself forward.}#gag {With a sharp lurch, the starship completes its intrasector wavewarp.}
+#action {The pulsing sound stops as the wavewarp drive powers down.} 
+{mplay ship/move/wavewarpstop.ogg;
+#line gag
+}
+#action {You detect a faint thrumming as the ship reorients itself.} 
+{
+mplay Ship/Move/EngineThrum.wav;
+#line gag
+}
+#action {You hear the occasional ping of objects impacting the hull as the starship moves through space.}
+{
+mplay Ship/Move/PingHull@intmath{1d3}.wav;
+#line gag
+} 
+#action {The gentle hum of the ship's engines momentarily amplifies as the starship moves through space.}
+{
+mplay Ship/Move/EngineHum.wav;
+#line gag
+}
+
+#NOP rooms
+#action {#$#soundpack environment starship %1 | %2 | %3 | %4 | %5}
+{
+#var {SpaceLanded} {%1};
+#var {PoweredUnpowered} {%2};
+#var {HostileSafe} {%3};
+#var {LightDark} {%4};
+#var {IndoorsOutdoors} {%5};
+#line gag
+}
+#action {#$#soundpack environment planet %1 | %2 | %3 | %4}
+{
+#var {Classification} {%1};
+#var {HostileSafe} {%2};
+#var {LightDark} {%3};
+#var {IndoorsOutdoors} {%4};
+#line gag
+}
+#action {#$#soundpack environment room %1 | %2 | %3}
+{
+#var {HostileSafe} {%1};
+#var {LightDark} {%2};
+#var {IndoorsOutdoors} {%3};
+#line gag
+}
+#action {#$#soundpack emote | %1 | %2}
+{
+#var {Gender} {%1};
+#var {emote} {%2};
+#line gag
+}
+#Action {#$#soundpack environment space | hostile | %1}
+{
+#var {LightDark} {%1};
+#line gag
+}
+#action {#$#soundpack environment station | %1 | %2 | %3}
+{
+#var {HostileSafe} {%1};
+#var {LightDark} {%2};
+#var {IndoorsOutdoors} {%3};
+#line gag
+} 
+#sub {[Alliance High Guard Command; Docking Bay %1] (indoors)}
+{[%1 Docking Bay; Alliance High Guard Command] (indoors)}
+#sub {["%1" %2] (%3) (Ship Power: %4)} {[%2] "%1" (Ship Power: %4) (%3)}
+
+#action {A fresh cloud of frozen water crystals rains down upon the room, drifting lazily down until it impacts the deck plating, where it immediately melts. Seconds later, the sound of rushing air comes somewhere from within the walls.} 
+{
+mplay Ambience/12Polar wind.wav;
+#line gag
+}
+
+#nop socials
+#sub {You can go %1} {%1}
+#gag {^You peer out and see...}
+
+#action {#$#soundpack social | %1 | %2} 
+{
+#var {social} {%1};
+#var {gender} {%2};
+#line gag
+}
+#action {You've arrived at %1}
+{
+mplay general/misc/arrivedat.wav;
+#line gag
+}
+#CLASS {toastsoft.net} CLOSE
