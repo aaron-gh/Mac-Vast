@@ -17,6 +17,10 @@
         #line gag
     }
     #action {The computer announces, "Releasing energy into %*."} {#gag line}
+#action {%* orienting towards %*.} {
+    vplay ship/computer/announce.ogg;
+    #line gag
+}
 
 #class {shipWeapons} close
 
@@ -70,11 +74,11 @@
       #line gag
     }
     #action {There are no starships in range.} {vplay ship/combat/noRange.ogg}
-    #action {Targetting %1 at coordinates %2.} {
+    #action {Targeting %1 at coordinates %2.} {
+        #if {"%1" != "empty space"} {vplay ship/combat/targetOther.ogg};
         vplay ship/combat/targetEntered.ogg;
     #showme {%1 at %2};
-    #line gag;
-        #if {"%1" != "empty space"} {vplay ship/combat/targetOther.ogg}
+    #line gag
     }
 
 #class {targeting} close
