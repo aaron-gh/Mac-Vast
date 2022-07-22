@@ -1,5 +1,19 @@
 #CLASS {worlddata} OPEN
 
-#VARIABLE         {worldlist}  {{vast}{{host}{bunkicenter.net}{name}{vast}{port}{7979}}}
+#VARIABLE {worldlist}
+{
+    {vast} 
+    {
+        {host} {bunkicenter.net}
+        {name} {vast}
+        {port} {7979}
+    }
+    {miriani}
+    {
+        {host} {localhost}
+        {name} {miriani}
+        {port} {1234}
+    }
+}
 
 #CLASS {worlddata} CLOSE
