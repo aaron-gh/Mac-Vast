@@ -8,12 +8,6 @@
         {name} {vast}
         {port} {7979}
     }
-    {miriani}
-    {
-        {host} {localhost}
-        {name} {miriani}
-        {port} {1234}
-    }
 }
 
 #CLASS {worlddata} CLOSE
