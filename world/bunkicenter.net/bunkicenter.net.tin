@@ -48,7 +48,7 @@
 {
     #class vastVariables write games/world/bunkicenter.net/vastVariables.tin
 }
-#var {version} {0.4}
+#var {version} {0.5}
 #alias {^spversion$} {#showme {You are currently running version $version of the soundpack.}}
 #alias {script} {#system open games/world/%0.tin}
 
