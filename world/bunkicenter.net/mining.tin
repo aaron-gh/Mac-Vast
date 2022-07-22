@@ -2,7 +2,7 @@
 
     #action {The shuttle speeds from the area, racing %* a small shaft.} {vplay mining/shuttle.ogg}
     #action {You swipe your finger across %* mining scanner, and it begins scanning for minerals.} {vplay mining/scan.ogg}
-    #action {You push a button on * mining borer which begins to dig a shaft into the mine's surface.} {vplay mining/startBorer.ogg}
+    #action {You push a button on %* mining borer which begins to dig a shaft into the mine's surface.} {vplay mining/startBorer.ogg}
     #action {The motor on %* mining borer goes quiet as the unit shuts down.} {vplay mining/borerEnd.ogg}
     #action {A spark shoots out from %* mining borer as it strikes a large stone.} {vplay mining/stoneStrike.ogg}
     #action {Grinding comes from %* mining borer and it slows to a halt as it gets damaged.} {vplay mining/borerDamage.ogg}

@@ -16,18 +16,22 @@
         vplay ship/combat/torp.ogg;
         #line gag
     }
-    #action {The computer announces, "Releasing energy into %*."} {#gag line}
-#action {%* orienting towards %*.} {
-    vplay ship/computer/announce.ogg;
-    #line gag
+    #action {The computer announces, "Releasing energy into %*."} {
+        vplay ship/computer/announce.ogg;
+        #line gag
+    }
+    #action {%* orienting towards %*.} {
+        vplay ship/computer/announce.ogg;
+        #line gag
 }
 
 #class {shipWeapons} close
 
 #class {shipCombat} open
 
-    #action {%* is within one unit of this starship.} {
+    #action {%1 is within one unit of this starship.} {
         vplay ship/combat/range.ogg;
+        #showme {%1};
         #line gag
     }
     #action {%* scored a hit on %1.} {
@@ -66,7 +70,7 @@
 
 #class {targeting} open
 
-    #sub {Target: %1, (%2).} {%2, %1.}
+    #sub {^Target: %1, (%2)$.} {%2, %1.}
     #action {Target lost.} {vplay ship/combat/targetLost.ogg}
     #action {The computer is now targeting %1.} {
         vplay ship/combat/targeting.ogg;
