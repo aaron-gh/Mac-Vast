@@ -70,7 +70,7 @@
 
 #class {targeting} open
 
-    #sub {^Target: %1, (%2)$.} {%2, %1.}
+    #sub {^Target: %1, (%2).$} {%2, %1.}
     #action {Target lost.} {vplay ship/combat/targetLost.ogg}
     #action {The computer is now targeting %1.} {
         vplay ship/combat/targeting.ogg;
