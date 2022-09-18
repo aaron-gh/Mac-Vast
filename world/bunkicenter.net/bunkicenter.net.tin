@@ -5,6 +5,7 @@
     #read games/world/bunkicenter.net/bunkicenter.net.tin;
     #read games/world/bunkicenter.net/airlock.tin;
     #read games/world/bunkicenter.net/communication.tin;
+    #read games/world/bunkicenter.net/config.tin;
     #read games/world/bunkicenter.net/explore.tin;
     #read games/world/bunkicenter.net/groundCombat.tin;
     #read games/world/bunkicenter.net/localEdit.tin;
@@ -30,6 +31,7 @@
 {
     #read games/world/bunkicenter.net/airlock.tin;
     #read games/world/bunkicenter.net/communication.tin;
+    #read games/world/bunkicenter.net/config.tin;
     #read games/world/bunkicenter.net/explore.tin;
     #read games/world/bunkicenter.net/groundCombat.tin;
     #read games/world/bunkicenter.net/localEdit.tin;
@@ -48,7 +50,7 @@
 {
     #class vastVariables write games/world/bunkicenter.net/vastVariables.tin
 }
-#var {version} {0.5}
+#var {version} {0.6}
 #alias {^spversion$} {#showme {You are currently running version $version of the soundpack.}}
 #alias {script} {#system open games/world/%0.tin}
 

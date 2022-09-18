@@ -5,7 +5,7 @@
     #action {You slide a %* into a slot near the butt of %*. You then lock a latch, securing the clip into place.} {vplay combat/loadClip.ogg}
     #action {You unclip a latch on %* and draw %*.} {vplay Combat/draw.ogg}
     #action {You slide %* inside %* and lock it into place.} {vplay Combat/holster.ogg}
-    #action {You pull the hammer back on * revolver and spin the cylinder.} {vplay combat/spin.ogg}
+    #action {You pull the hammer back on %* revolver and spin the cylinder.} {vplay combat/spin.ogg}
     #action {%1 aims %2 at %3, and fires %4 shot%*} {#line gag}
     #action {You aim at %1 with %2, and fire %3!} {vplay combat/aim.ogg}
 

@@ -1,6 +1,6 @@
 .DS_Store
-world/variables.tin
 logs
+world/verb.txt
+world/variables.tin
 world/bunkicenter.net/vast.tin
 world/bunkicenter.net/vastVariables.tin
-world/verb.txt

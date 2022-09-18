@@ -144,7 +144,7 @@ I have provided several aliases and macros in this pack to allow for reloading, 
 * F1: Check sound volume.
 * F2: mute/unmute toggle for all sounds.
 * F3: turn volume down. Please do not go below 0.0 (I haven't implemented a limit on this yet.)
-* f4: Raise volume (Please don't go about 2.0, again, not limit yeted.)
+* f4: Raise volume (Please don't go about 2.0, again, not limitted yet.)
 
 # 4 Credits
 

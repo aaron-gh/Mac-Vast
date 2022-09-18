@@ -1,0 +1,26 @@
+#class {config} open
+
+    #alias {config} {
+        #if {"%0" == "dmode"} {
+            #if {$devMode == 1} {
+                #var {devMode} {0};
+                #showme {Dev Mode set to : False}
+            };
+            #else {
+                #var {devMode} {1};
+                #showme {Dev Mode set to: True.}
+            }
+        };
+        #if {"%0" =="rtime"} {
+            #if {$rtime ==1} {
+                #var {rtime} {0};
+                #showme {Round time sound set to: False.}
+            };
+            #else {
+                #var {rtime} {1};
+                #showme {Round time sound set to: True.}
+            }
+        }
+    }
+
+#class {config} close
