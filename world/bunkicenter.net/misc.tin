@@ -2,7 +2,7 @@
 
     #nop Uncategorised
     #action {If you have not created an account with us} {
-        vplay misc/prompt.ogg;
+        vplay Misc/prompt.ogg;
         #if {$devMode} {
             #debug actions;
             #debug alias;
@@ -11,36 +11,36 @@
         }
     }
     #action {------------------------------------------------------------------------------} {#line gag}
-    #action {You see %* sign here.} {vplay misc/sign.ogg};
+    #action {You see %* sign here.} {vplay Misc/sign.ogg};
     #action {%1 news reader flashes, indicating that it has unread news in the %2 category.} {
-        vplay misc/newNews.ogg;
+        vplay Misc/newNews.ogg;
         #showme {New news in %2};
         #line gag;
     }
     #action {People detector: Yes} {
-        vplay misc/people.ogg;
+        vplay Misc/people.ogg;
         #line gag;
     }
     #action {(%1 seconds roundtime.)} {
         #if {$rtime} {
-            #delay {%1} {vplay misc/roundtimeOver.ogg}
+            #delay {%1} {vplay Misc/roundtimeOver.ogg}
         }
     }
     #gag {You peer %* and see...}
 
     #nop Contamination scanners
-    #action {A sensor begins to slowly scan you from head to toe.} {vplay misc/sensorScan.ogg}
-    #action {A nozzle extends, blasting you with air.} {vplay misc/airStart.ogg}
+    #action {A sensor begins to slowly scan you from head to toe.} {vplay Misc/sensorScan.ogg}
+    #action {A nozzle extends, blasting you with air.} {vplay Misc/airStart.ogg}
 
     #nop Money money money!
-    #action {^You receive %* dollars} {vplay misc/dollars.ogg}
-    #action {A payment of %* dollars %*} {vplay misc/giveMoney.ogg}
+    #action {^You receive %* dollars} {vplay Misc/dollars.ogg}
+    #action {A payment of %* dollars %*} {vplay Misc/giveMoney.ogg}
 
     #nop prompts
-    #action {[Type a line of input, cancel with '@abort' or 'A']} {vplay misc/prompt.ogg}
-   #action {[Type 0 to exit, cancel with '@abort' or '} {vplay misc/prompt.ogg}
-    #action {[Enter "yes" or "no"]} {vplay misc/prompt.ogg}
-    #action {>> Command Aborted <<} {vplay misc/abort.ogg}
-    #action {Invalid selection.} {vplay misc/abort.ogg}
+    #action {[Type a line of input, cancel with '@abort' or 'A']} {vplay Misc/prompt.ogg}
+   #action {[Type 0 to exit, cancel with '@abort' or '} {vplay Misc/prompt.ogg}
+    #action {[Enter "yes" or "no"]} {vplay Misc/prompt.ogg}
+    #action {>> Command Aborted <<} {vplay Misc/abort.ogg}
+    #action {Invalid selection.} {vplay Misc/abort.ogg}
 
 #class {misc} close

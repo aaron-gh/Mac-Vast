@@ -60,30 +60,30 @@
 #macro {\eOR}
 {
 #math {vol} {$vol - .05};
-play luaaudio/down.mp3;#showme {Sound volume now at $vol\.}
+play Luaaudio/down.mp3;#showme {Sound volume now at $vol\.}
 }
 #macro {\eOS}
 {
 #math {vol} {$vol + .05};
-	play luaaudio/up.mp3;#showme {Sound volume now at $vol\.}
+	play Luaaudio/up.mp3;#showme {Sound volume now at $vol\.}
 }
 #macro {\eOP}
 {
 #if {"$vol" != "0"}
 {
-play luaaudio/off.mp3;#variable {oldvol} {$vol};
+play Luaaudio/off.mp3;#variable {oldvol} {$vol};
 #variable {vol} {0};
 #showme {Your soundpack has been muted.}
 };
 #elseif {"$vol" == "0"}
 {
 #variable {vol} {$oldvol};
-play luaaudio/on.mp3;#showme {Your soundpack has been unmuted. Sound volume now at $vol\.}
+play Luaaudio/on.mp3;#showme {Your soundpack has been unmuted. Sound volume now at $vol\.}
 }
 }
 #alias {vol?} 
 {
-play luaaudio/up.ogg;
+play Luaaudio/up.ogg;
 #showme {Your volume is $vol\.}
 }
 #function {math}

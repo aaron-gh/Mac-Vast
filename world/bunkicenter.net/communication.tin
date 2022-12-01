@@ -2,8 +2,8 @@
 
     #nop an experemental way of handling channels. This may not work.
     #action {[%1] %2 "%3"} {vplay Communication/%1.ogg}
-    #action {[%1] %2: %*} {vplay communication/%1.ogg}
-    #action {^[%1] %2 %3s} {vplay communication/%1.ogg}
+    #action {[%1] %2: %*} {vplay Communication/%1.ogg}
+    #action {^[%1] %2 %3s} {vplay Communication/%1.ogg}
 
 #class {channels} close
 
@@ -48,10 +48,10 @@
 
 #class {Phones} open
 
-    #action {You tap an icon labeled mute} {vplay communication/muted.ogg}
-    #action {You tap an icon labeled unmute.} {vplay communication/unmute.ogg}
-    #action {Message sent.} {vplay communication/messageSent.ogg}
-    #action {You hear your phone chime twice.} {vplay communication/messageReceived.ogg}
+    #action {You tap an icon labeled mute} {vplay Communication/muted.ogg}
+    #action {You tap an icon labeled unmute.} {vplay Communication/unmute.ogg}
+    #action {Message sent.} {vplay Communication/messageSent.ogg}
+    #action {You hear your phone chime twice.} {vplay Communication/messageReceived.ogg}
     #action {You touch the end call icon, and a click can be heard over the line as the call ends.} {
         vplay Communication/callEnd.ogg;
         #showme {Call ended.};
@@ -62,12 +62,12 @@
         #showme {Call ended.};
     #line gag
     }
-    #action {You hear 3 long buzzes before the line goes dead.} {vplay communication/phoneBusy.ogg}
+    #action {You hear 3 long buzzes before the line goes dead.} {vplay Communication/phoneBusy.ogg}
     #action {You hear your phone chime as it receives a new voicemail.} {vplay communications/voicemail.ogg}
-    #action {You hear a ringing sound on the line.} {vplay communication/ringOut.ogg}
-    #action {You hear your %* ringing.} {vplay communication/ringIn.ogg}
+    #action {You hear a ringing sound on the line.} {vplay Communication/ringOut.ogg}
+    #action {You hear your %* ringing.} {vplay Communication/ringIn.ogg}
     #action {A banner reads: "You have %1 of mail to be picked up."} {
-        vplay communication/newMail.ogg;
+        vplay Communication/newMail.ogg;
         #showme {%1 of mail.};
         #line gag
     }
@@ -76,10 +76,10 @@
 
 #class {staff} open
 
-    #action {Critical. The staff have opened a new support with you. Please type SUPPORT to view.} {vplay communication/support.ogg}
-    #action {^The staff have replied to your support.} {vplay communication/support.ogg}
-    #action {^A staff member shouts} {vplay communication/shout.ogg}
-    #action {^announcement from the staff} {vplay communication/announcement.ogg}
-    #action {[Game Change]: %*} {vplay communication/change.ogg}
+    #action {Critical. The staff have opened a new support with you. Please type SUPPORT to view.} {vplay Communication/support.ogg}
+    #action {^The staff have replied to your support.} {vplay Communication/support.ogg}
+    #action {^A staff member shouts} {vplay Communication/shout.ogg}
+    #action {^announcement from the staff} {vplay Communication/announcement.ogg}
+    #action {[Game Change]: %*} {vplay Communication/change.ogg}
 
 #class {staff} close

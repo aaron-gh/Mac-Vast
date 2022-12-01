@@ -17,13 +17,14 @@
     #read games/world/bunkicenter.net/shipMisc.tin;
     #read games/world/bunkicenter.net/shipMove.tin;
     #read games/world/bunkicenter.net/soundpackHook.tin;
-    #read games/world/bunkicenter.net/vastVariables.tin;
+    #read games/world/bunkicenter.net/
+    Variables.tin;
     #showme {Soundpack reloaded!}
 }
 
 #ALIAS {vplay %1.%2}
 {
-    #system play -v $vol "games/sounds/vast/%1.%2" -q 2>/dev/null &;
+    #system play -v $vol "games/sounds/Vast/%1.%2" -q 2>/dev/null &;
     #gag {^[[0m#OK: EXECUTING %0}
 }
 

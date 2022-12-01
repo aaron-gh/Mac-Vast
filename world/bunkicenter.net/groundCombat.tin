@@ -1,21 +1,21 @@
 #class {groundWeapons} open
 
-    #action {You begin loading ammunition from %* into %*.} {vplay combat/loadingAmmo.ogg}
-    #action {You continue loading ammunition into %* from %*.} {vplay combat/continue.ogg}
-    #action {You slide a %* into a slot near the butt of %*. You then lock a latch, securing the clip into place.} {vplay combat/loadClip.ogg}
+    #action {You begin loading ammunition from %* into %*.} {vplay Combat/loadingAmmo.ogg}
+    #action {You continue loading ammunition into %* from %*.} {vplay Combat/continue.ogg}
+    #action {You slide a %* into a slot near the butt of %*. You then lock a latch, securing the clip into place.} {vplay Combat/loadClip.ogg}
     #action {You unclip a latch on %* and draw %*.} {vplay Combat/draw.ogg}
     #action {You slide %* inside %* and lock it into place.} {vplay Combat/holster.ogg}
-    #action {You pull the hammer back on %* revolver and spin the cylinder.} {vplay combat/spin.ogg}
+    #action {You pull the hammer back on %* revolver and spin the cylinder.} {vplay Combat/spin.ogg}
     #action {%1 aims %2 at %3, and fires %4 shot%*} {#line gag}
-    #action {You aim at %1 with %2, and fire %3!} {vplay combat/aim.ogg}
+    #action {You aim at %1 with %2, and fire %3!} {vplay Combat/aim.ogg}
 
 #class {groundWeapons} close
 
 #class {healing} open
 
-    #action {The tip of %* pops out of the pressure release valve on %*.} {vplay combat/pop.ogg}
+    #action {The tip of %* pops out of the pressure release valve on %*.} {vplay Combat/pop.ogg}
     #action {%1 aims a nozzle at %2, and squeezes a trigger.} {
-        #if {"%2" == "you"} {vplay combat/healed.ogg};
+        #if {"%2" == "you"} {vplay Combat/healed.ogg};
         #showme {%1 heals %2.};
         #line gag
     }
@@ -25,38 +25,38 @@
 #class {groundCombat} open
 
     #action {Your shot goes wide!}{
-        vplay combat/Miss.ogg;
+        vplay Combat/Miss.ogg;
         #showme {missed!};
         #line gag
     }
     #action {%1 keels over, takes its last breath, and dies!} {
-        vplay combat/die.ogg;
+        vplay Combat/die.ogg;
         #show {%1 dies!};
         #line gag
     }
     #action {You scored %1 %2 on %3. Total damage: (%4)} {
-        vplay combat/hit.ogg;
+        vplay Combat/hit.ogg;
         #showme {%1 %2. %4 damage.};
         #line gag
     }
-    #action {%1 prepares to do a %2 heal on %3.} {vplay combat/enemyHeal.ogg}
-    #action {%* completes a %* heal on %*.} {vplay combat/EnemyHealComplete.ogg}
+    #action {%1 prepares to do a %2 heal on %3.} {vplay Combat/enemyHeal.ogg}
+    #action {%* completes a %* heal on %*.} {vplay Combat/EnemyHealComplete.ogg}
     #action {You quickly dodge out of the way of %1.} {
-        vplay combat/dodge.ogg;
+        vplay Combat/dodge.ogg;
         #showme {%1 dodged.};
         #line gag
     }
     #action {A flare pellet explodes in a bright blue violet light over %1 head.} {
-        vplay combat/flare.ogg;
+        vplay Combat/flare.ogg;
         #showme {%1 flared!};
         #line gag
     }
-    #action {%1 focuses on you.} {vplay combat/focusYou.ogg}
+    #action {%1 focuses on you.} {vplay Combat/focusYou.ogg}
     #action {%1 turns its focus towards %2.} {
-        vplay combat/focusOther.ogg;
+        vplay Combat/focusOther.ogg;
         #show {%1 focuses on %2.};
         #line gag
     }
-    #action {You've just lost %* of your overall health.} {vplay combat/healthLost.ogg}
+    #action {You've just lost %* of your overall health.} {vplay Combat/healthLost.ogg}
 
 #class {groundCombat} close
