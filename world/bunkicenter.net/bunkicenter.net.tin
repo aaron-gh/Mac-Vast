@@ -33,7 +33,7 @@
 
 #ALIAS {vplay %1.%2}
 {
-    #system play -v $vol "games/sounds/Vast/%1.%2" -q 2>/dev/null &;
+    #system play -v $vol 'games/sounds/Vast/%1.%2' -q 2>/dev/null &;
     #gag {^[[0m#OK: EXECUTING %0}
 }
 
