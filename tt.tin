@@ -1,3 +1,65 @@
+#EVENT {PROGRAM START}
+{
+    #nop Find out what OS you are running.;
+    #script {SYSTEM[OS]} {uname -o};
+    #script {SYSTEM[KERNEL]} {uname -s};
+    #script {SYSTEM[VERSION]} {tail /proc/version};
+    #switch {"$SYSTEM[VERSION][1]"}
+    {
+        #case {"%*Microsoft@Microsoft.com%*"}
+        {
+            #variable OS WSL
+        };
+        #case {"CYGWIN%*"}
+        {
+            #variable OS Cygwin
+        };
+        #default
+        {
+            #switch {"$SYSTEM[OS][1]"}
+            {
+                #case {"Android"}
+                {
+                    #variable OS Android
+                };
+                #case {"Cygwin"}
+                {
+                    #variable OS Cygwin
+                };
+                #case {"WSL"}
+                {
+                    #variable OS WSL
+                };
+                #case {"GNU/Linux"}
+                {
+                    #variable OS Linux
+                };
+                #default
+                {
+                    #switch {"$SYSTEM[KERNEL][1]"}
+                    {
+                        #case {"Linux"}
+                        {
+                            #variable OS Linux
+                        };
+                        #case {"CYGWIN%*"}
+                        {
+                            #variable OS Cygwin
+                        };
+                        #case {"Darwin"}
+                        {
+                            #variable OS Darwin
+                        };
+                        #default
+                        {
+                            #variable OS Unknown
+                        }
+                    }
+                }
+            }
+        }
+    }
+};
 #NOP config options
 
 #config {repeat enter} {on}
