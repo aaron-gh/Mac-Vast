@@ -17,8 +17,7 @@
     #read games/world/bunkicenter.net/shipMisc.tin;
     #read games/world/bunkicenter.net/shipMove.tin;
     #read games/world/bunkicenter.net/soundpackHook.tin;
-    #read games/world/bunkicenter.net/
-    Variables.tin;
+    #read games/world/bunkicenter.nen/Variables.tin;
     #showme {Soundpack reloaded!}
 }
 
@@ -43,7 +42,7 @@
     #read games/world/bunkicenter.net/shipComputer.tin;
     #read games/world/bunkicenter.net/shipMisc.tin;
     #read games/world/bunkicenter.net/shipMove.tin;
-    #read games/world/bunkicenter.net/soundpackhook.tin;
+    #read games/world/bunkicenter.net/soundpackHook.tin;
     #class vastVariables read games/world/bunkicenter.net/vastVariables.tin
 }
 
