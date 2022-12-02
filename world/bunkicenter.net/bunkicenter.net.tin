@@ -1,5 +1,15 @@
 #CLASS {bunkicenter.net} OPEN
 
+#ALIAS {^spversion$}
+{
+    #showme {You are currently running version $version of the soundpack.}
+}
+
+#ALIAS {script}
+{
+    #system open games/world/%0.tin
+}
+
 #ALIAS {spreload}
 {
     #read games/world/bunkicenter.net/bunkicenter.net.tin;
@@ -17,7 +27,7 @@
     #read games/world/bunkicenter.net/shipMisc.tin;
     #read games/world/bunkicenter.net/shipMove.tin;
     #read games/world/bunkicenter.net/soundpackHook.tin;
-    #read games/world/bunkicenter.nen/Variables.tin;
+    #read games/world/bunkicenter.net/vastVariables.tin;
     #showme {Soundpack reloaded!}
 }
 
@@ -50,8 +60,7 @@
 {
     #class vastVariables write games/world/bunkicenter.net/vastVariables.tin
 }
-#var {version} {0.6}
-#alias {^spversion$} {#showme {You are currently running version $version of the soundpack.}}
-#alias {script} {#system open games/world/%0.tin}
+
+#VARIABLE {version} {0.6}
 
 #CLASS {bunkicenter.net} CLOSE

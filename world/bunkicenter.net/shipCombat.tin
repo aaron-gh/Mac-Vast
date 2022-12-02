@@ -149,4 +149,4 @@
     #action {The pod begins a slow landing in the docking bay.} {vplay Ship/move/youLanding.ogg}
     #action {The capsule touches down, and you quickly climb out.} {vplay Ship/move/youLanded.ogg}
 
-#class {capsule} close
+#class {capsules} close

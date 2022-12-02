@@ -46,7 +46,7 @@
 
 #class {shipComms }close
 
-#class {Phones} open
+#class {phones} open
 
     #action {You tap an icon labeled mute} {vplay Communication/muted.ogg}
     #action {You tap an icon labeled unmute.} {vplay Communication/unmute.ogg}
