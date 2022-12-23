@@ -1,45 +1,45 @@
 #class {channels} open
 
     #nop an experemental way of handling channels. This may not work.
-    #action {[%1] %2 "%3"} {vplay Communication/%1.ogg}
-    #action {[%1] %2: %*} {vplay Communication/%1.ogg}
+    #action {[^%1] %2 "%3"$} {vplay Communication/%1.ogg}
+    #action {[^%1] %2: %*$} {vplay Communication/%1.ogg}
     #action {^[%1] %2 %3s} {vplay Communication/%1.ogg}
 
 #class {channels} close
 
 #class {shipComms} open
 
-    #action {A speaker crackles to life and announces, "Incoming broadcast detected."} {
+    #action {^A speaker crackles to life and announces, "Incoming broadcast detected."$} {
         vplay Communication/radio.ogg;
         #showme {Incoming broadcast.};
         #line gag
     }
-    #action {You pick up the microphone and say, %1 into the intercom.} {
+    #action {^You pick up the microphone and say, %1 into the intercom.$} {
         #showme {[pa] you, %1};
         #line gag
     }
-    #action {You hear %1's voice over the intercom, %2} {
+    #action {^You hear %1's voice over the intercom, %2$} {
         #showme {[pa] %1, %2};
         #line gag
     }
-    #action {%1 %2 over the intercom.} {
+    #action {^%1 %2 over the intercom.$} {
         #showme {[pa] %1 %2};
         #line gag
     }
-    #action {A voice comes over the starship's speaker and says, "%1"} {
+    #action {^A voice comes over the starship's speaker and says, "%1"$} {
         vplay Communication/radio.ogg;
         #showme {%1};
         #line gag
     }
-    #action {The SRC panel flashes: New message from %1} {
+    #action {^The SRC panel flashes: New message from %1$} {
         #showme {[SRC] %1};
         #line gag
     }
-    #action {You type out %1, on the SRC panel, and hit send.} {
+    #action {^You type out %1, on the SRC panel, and hit send.$} {
         #showme {[SRC] %1};
         #line gag
     }
-    #action {%1 types out a message on the SRC panel and hits send. The panel displays, %2} {
+    #action {^%1 types out a message on the SRC panel and hits send. The panel displays, %2$} {
         #showme {[SRC] %1  sends %2};
         #line gag
     }
@@ -48,25 +48,25 @@
 
 #class {phones} open
 
-    #action {You tap an icon labeled mute} {vplay Communication/muted.ogg}
-    #action {You tap an icon labeled unmute.} {vplay Communication/unmute.ogg}
-    #action {Message sent.} {vplay Communication/messageSent.ogg}
-    #action {You hear your phone chime twice.} {vplay Communication/messageReceived.ogg}
-    #action {You touch the end call icon, and a click can be heard over the line as the call ends.} {
+    #action {^You tap an icon labeled mute$} {vplay Communication/muted.ogg}
+    #action {^You tap an icon labeled unmute.$} {vplay Communication/unmute.ogg}
+    #action {^Message sent.$} {vplay Communication/messageSent.ogg}
+    #action {^You hear your phone chime twice.$} {vplay Communication/messageReceived.ogg}
+    #action {^You touch the end call icon, and a click can be heard over the line as the call ends.$} {
         vplay Communication/callEnd.ogg;
         #showme {Call ended.};
         #line gag
     }
-    #action {Over the line, you hear a click sound, indicating that the call has been ended.} {
+    #action {^Over the line, you hear a click sound, indicating that the call has been ended.$} {
         vplay Communication/callEnd.ogg;
         #showme {Call ended.};
-    #line gag
+        #line gag
     }
-    #action {You hear 3 long buzzes before the line goes dead.} {vplay Communication/phoneBusy.ogg}
-    #action {You hear your phone chime as it receives a new voicemail.} {vplay communications/voicemail.ogg}
-    #action {You hear a ringing sound on the line.} {vplay Communication/ringOut.ogg}
-    #action {You hear your %* ringing.} {vplay Communication/ringIn.ogg}
-    #action {A banner reads: "You have %1 of mail to be picked up."} {
+    #action {^You hear 3 long buzzes before the line goes dead.$} {vplay Communication/phoneBusy.ogg}
+    #action {^You hear your phone chime as it receives a new voicemail.$} {vplay communications/voicemail.ogg}
+    #action {^You hear a ringing sound on the line.$} {vplay Communication/ringOut.ogg}
+    #action {^You hear your %* ringing.$} {vplay Communication/ringIn.ogg}
+    #action {^A banner reads: "You have %1 of mail to be picked up."$} {
         vplay Communication/newMail.ogg;
         #showme {%1 of mail.};
         #line gag
@@ -76,10 +76,10 @@
 
 #class {staff} open
 
-    #action {Critical. The staff have opened a new support with you. Please type SUPPORT to view.} {vplay Communication/support.ogg}
-    #action {^The staff have replied to your support.} {vplay Communication/support.ogg}
-    #action {^A staff member shouts} {vplay Communication/shout.ogg}
-    #action {^announcement from the staff} {vplay Communication/announcement.ogg}
-    #action {[Game Change]: %*} {vplay Communication/change.ogg}
+    #action {^Critical. The staff have opened a new support with you. Please type SUPPORT to view.$} {vplay Communication/support.ogg}
+    #action {^The staff have replied to your support.$} {vplay Communication/support.ogg}
+    #action {^A staff member shouts %*$} {vplay Communication/shout.ogg}
+    #action {^announcement from the staff %*$} {vplay Communication/announcement.ogg}
+    #action {^[Game Change]: %*$} {vplay Communication/change.ogg}
 
 #class {staff} close
