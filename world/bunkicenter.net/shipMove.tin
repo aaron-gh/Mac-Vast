@@ -10,7 +10,7 @@
         #line gag
     }
     #action {The ship traverses into the next sector.} {
-        vsplay Ship/Move/switchSector.ogg;
+        vplay Ship/Move/switchSector.ogg;
         #line gag
     }
     #action {That space is occupied.} {
