@@ -15,11 +15,13 @@
         #line gag
     }
     #action {^You pick up the microphone and say, %1 into the intercom.$} {
-        #showme {[pa] you, %1};
+        vplay Communication/pa.ogg;
+        #line ignore #showme {[pa] you, %1};
         #line gag
     } {4}
     #action {^You hear %1's voice over the intercom, %2$} {
-        #showme {[pa] %1, %2};
+        vplay Communication/pa.ogg;
+        #line ignore #showme {[pa] %1, %2};
         #line gag
     }
     #action {^%1 %2 over the intercom.$} {
