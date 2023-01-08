@@ -5,7 +5,13 @@
         #if {"%1" == "position"} {vplay socials/%2.ogg};
         #if {"%1" == "social"} {vplay Socials/%2-%3.ogg};
         #if {"%2" == "say"} {vplay Socials/say.ogg};
-        #line gag
+        #if {"%1" == "detector"} {
+            #if {"%2" == "creatures"} {
+                vplay Misc/creatureFound.ogg;
+                #show {"%3 creatures"};
+            };
+        }
+    #line gag
     }
 
 #class {spHook} close

@@ -61,6 +61,6 @@
     #class vastVariables write games/world/bunkicenter.net/vastVariables.tin
 }
 
-#VARIABLE {version} {0.6}
+#VARIABLE {version} {0.6.1}
 
 #CLASS {bunkicenter.net} CLOSE
