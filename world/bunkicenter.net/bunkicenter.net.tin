@@ -1,4 +1,4 @@
-#CLASS {bunkicenter.net} OPEN
+#CLASS {$worldurl} OPEN
 
 #ALIAS {^spversion$}
 {
@@ -12,55 +12,58 @@
 
 #ALIAS {spreload}
 {
-    #read games/world/bunkicenter.net/bunkicenter.net.tin;
-    #read games/world/bunkicenter.net/airlock.tin;
-    #read games/world/bunkicenter.net/communication.tin;
-    #read games/world/bunkicenter.net/config.tin;
-    #read games/world/bunkicenter.net/explore.tin;
-    #read games/world/bunkicenter.net/groundCombat.tin;
-    #read games/world/bunkicenter.net/localEdit.tin;
-    #read games/world/bunkicenter.net/mining.tin;
-    #read games/world/bunkicenter.net/misc.tin;
-    #read games/world/bunkicenter.net/sifting.tin;
-    #read games/world/bunkicenter.net/shipCombat.tin;
-    #read games/world/bunkicenter.net/shipComputer.tin;
-    #read games/world/bunkicenter.net/shipMisc.tin;
-    #read games/world/bunkicenter.net/shipMove.tin;
-    #read games/world/bunkicenter.net/soundpackHook.tin;
-    #read games/world/bunkicenter.net/vastVariables.tin;
+    #read games/world/$worldurl/$worldurl.tin;
+    #read games/world/$worldurl/airlock.tin;
+    #read games/world/$worldurl/communication.tin;
+    #read games/world/$worldurl/config.tin;
+    #read games/world/$worldurl/explore.tin;
+    #read games/world/$worldurl/groundCombat.tin;
+    #read games/world/$worldurl/localEdit.tin;
+    #read games/world/$worldurl/mining.tin;
+    #read games/world/$worldurl/misc.tin;
+    #read games/world/$worldurl/sifting.tin;
+    #read games/world/$worldurl/shipCombat.tin;
+    #read games/world/$worldurl/shipComputer.tin;
+    #read games/world/$worldurl/shipMisc.tin;
+    #read games/world/$worldurl/shipMove.tin;
+    #read games/world/$worldurl/soundpackHook.tin;
+    #read games/world/$worldurl/vastVariables.tin;
     #showme {Soundpack reloaded!}
 }
 
 #ALIAS {vplay %1.%2}
 {
     #system play -v $vol 'games/sounds/Vast/%1.%2' -q 2>/dev/null &;
-    #gag {^[[0m#OK: EXECUTING %0}
+}
+
+#ALIAS {vcplay %1.%2} {
+    #system play -v $scvol 'games/sounds/Vast/%1.%2' -q 2>/dev/null &
 }
 
 #EVENT {SESSION CONNECTED}
 {
-    #read games/world/bunkicenter.net/airlock.tin;
-    #read games/world/bunkicenter.net/communication.tin;
-    #read games/world/bunkicenter.net/config.tin;
-    #read games/world/bunkicenter.net/explore.tin;
-    #read games/world/bunkicenter.net/groundCombat.tin;
-    #read games/world/bunkicenter.net/localEdit.tin;
-    #read games/world/bunkicenter.net/mining.tin;
-    #read games/world/bunkicenter.net/misc.tin;
-    #read games/world/bunkicenter.net/sifting.tin;
-    #read games/world/bunkicenter.net/shipCombat.tin;
-    #read games/world/bunkicenter.net/shipComputer.tin;
-    #read games/world/bunkicenter.net/shipMisc.tin;
-    #read games/world/bunkicenter.net/shipMove.tin;
-    #read games/world/bunkicenter.net/soundpackHook.tin;
-    #class vastVariables read games/world/bunkicenter.net/vastVariables.tin
+    #read games/world/$worldurl/airlock.tin;
+    #read games/world/$worldurl/communication.tin;
+    #read games/world/$worldurl/config.tin;
+    #read games/world/$worldurl/explore.tin;
+    #read games/world/$worldurl/groundCombat.tin;
+    #read games/world/$worldurl/localEdit.tin;
+    #read games/world/$worldurl/mining.tin;
+    #read games/world/$worldurl/misc.tin;
+    #read games/world/$worldurl/sifting.tin;
+    #read games/world/$worldurl/shipCombat.tin;
+    #read games/world/$worldurl/shipComputer.tin;
+    #read games/world/$worldurl/shipMisc.tin;
+    #read games/world/$worldurl/shipMove.tin;
+    #read games/world/$worldurl/soundpackHook.tin;
+    #class vastVariables read games/world/$worldurl/vastVariables.tin
 }
 
 #EVENT {SESSION DISCONNECTED}
 {
-    #class vastVariables write games/world/bunkicenter.net/vastVariables.tin
+    #class vastVariables write games/world/$worldurl/vastVariables.tin
 }
 
-#VARIABLE {version} {0.6.1}
+#VARIABLE {version} {0.7}
 
-#CLASS {bunkicenter.net} CLOSE
+#CLASS {$worldurl} CLOSE

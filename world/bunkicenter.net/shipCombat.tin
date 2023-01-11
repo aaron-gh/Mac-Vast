@@ -1,7 +1,7 @@
 #class {shipWeapons} open
 
     #action {A barrage of bullets burst from the ship as the %* fired.} {
-        Play Ship/Combat/rail.ogg;
+        vplay Ship/Combat/rail.ogg;
         #line gag
     }
     #action {A loud swooshing noise fills the ship as the phaser banks release a burst of energy.} {

@@ -62,7 +62,7 @@
 };
 #NOP config options
 
-#config {repeat enter} {on}
+#config {repeat enter} {off}
 #CONFIG {packet patch} {1}
 #CONFIG {command echo} {off}
 #FORMAT {session[ScreenRows]} {%R}
@@ -108,7 +108,6 @@
 #alias {play %0.%1}
 {
 #system play -v $vol games/sounds/"%0.%1" -q 2>/dev/null &;
-#gag {^[[0m#OK: EXECUTING %0}
 }
 #alias {{vol|volume} %1}
 {
