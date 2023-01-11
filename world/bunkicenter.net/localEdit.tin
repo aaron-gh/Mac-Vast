@@ -9,7 +9,7 @@
         #system printf "%s\n" 1d w q | ed games/world/verb.txt;
         #system echo . >> games/world/verb.txt;
         #if {"$OS" == "Linux"} {
-            #system {pluma games/world/verb.txt &> /dev/null}
+            #system {pluma games/world/verb.txt &> /dev/null &}
         };
         #else {
             #system open games/world/verb.txt
