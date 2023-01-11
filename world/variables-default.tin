@@ -2,7 +2,7 @@
 
 #EVENT {SESSION DEACTIVATED}
 {
-    #class {variables} {write} {games/world/Variables.tin}
+    #class {variables} {write} {games/world/variables.tin}
 }
 
 #VARIABLE {logfile} {}

@@ -2,7 +2,7 @@
 
     #action {#$#sp | %1 | %2 | %3} {
         #if {"%1" == "groups"} {vplay Misc/%2.ogg};
-        #if {"%1" == "position"} {vplay socials/%2.ogg};
+        #if {"%1" == "position"} {vplay Socials/%2.ogg};
         #if {"%1" == "social"} {vplay Socials/%2-%3.ogg};
         #if {"%2" == "say"} {vplay Socials/say.ogg};
         #if {"%1" == "detector"} {
@@ -14,4 +14,4 @@
     #line gag
     }
 
-#class {spHook} close
+#class {spHook} close   
