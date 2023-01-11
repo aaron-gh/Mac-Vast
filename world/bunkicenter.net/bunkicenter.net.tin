@@ -34,7 +34,10 @@
 #ALIAS {vplay %1.%2}
 {
     #system play -v $vol 'games/sounds/Vast/%1.%2' -q 2>/dev/null &;
-    #gag {^[[0m#OK: EXECUTING %0}
+}
+
+#ALIAS {vcplay %1.%2} {
+    #system play -v $scvol 'games/sounds/Vast/%1.%2' -q 2>/dev/null &
 }
 
 #EVENT {SESSION CONNECTED}
@@ -61,6 +64,6 @@
     #class vastVariables write games/world/$worldurl/vastVariables.tin
 }
 
-#VARIABLE {version} {0.6.1}
+#VARIABLE {version} {0.7}
 
 #CLASS {$worldurl} CLOSE

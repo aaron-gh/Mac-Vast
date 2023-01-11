@@ -46,7 +46,7 @@
         #line gag
     }
 
-#class {shipComms }close
+#class {shipComms}close
 
 #class {phones} open
 
@@ -90,6 +90,8 @@
 
     #action {^A voice emanates from the speaker on a flight control scanner: %1$} {
         vplay Communication/fc.ogg;
-#showme {%1};
-#line gag        
+        #showme {%1};
+        #line gag        
     }
+
+#class {fc} close
