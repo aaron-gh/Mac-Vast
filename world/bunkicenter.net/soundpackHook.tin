@@ -10,7 +10,7 @@
                 vplay Misc/creatureFound.ogg;
                 #show {"%3 creatures"};
             };
-        }
+        };
     #line gag
     }
 
