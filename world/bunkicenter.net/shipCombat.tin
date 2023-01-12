@@ -17,11 +17,11 @@
         #line gag
     }
     #action {The computer announces, "Releasing energy into %*."} {
-        vplay Ship/computer/announce.ogg;
+        vplay Ship/Computer/announce.ogg;
         #line gag
     }
     #action {%* orienting towards %*.} {
-        vplay Ship/computer/announce.ogg;
+        vplay Ship/Computer/announce.ogg;
         #line gag
 }
 
