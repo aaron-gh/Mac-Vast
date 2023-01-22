@@ -88,7 +88,7 @@
 
 #class {fc} open
 
-    #action {^A voice emanates from the speaker on a flight control scanner: %1$} {
+    #action {^A voice emanates from the speaker on a flight control scanner: "%1"$} {
         vplay Communication/fc.ogg;
         #showme {%1};
         #line gag        
