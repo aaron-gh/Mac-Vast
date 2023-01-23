@@ -34,7 +34,7 @@
 
     #nop Money money money!
     #action {^You receive %* dollars} {vplay Misc/dollars.ogg}
-    #action {A payment of %* dollars %*} {vplay Misc/giveMoney.ogg}
+    #action {A payment of %* dollars %*} {vplay Misc/dollars.ogg}
 
     #nop prompts
     #action {[Type a line of input, cancel with '@abort' or 'A']} {vplay Misc/prompt.ogg}
