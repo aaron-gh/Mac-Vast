@@ -1,12 +1,12 @@
 #class {groundWeapons} open
 
-    #action {You begin loading ammunition from %* into %*.} {vplay Combat/loadingAmmo.ogg}
+    #action {You begin loading ammunition from %* into %*.} {vplay Combat/loadAmmo.ogg}
     #action {You continue loading ammunition into %* from %*.} {vplay Combat/continue.ogg}
     #action {You slide a %* into a slot near the butt of %*. You then lock a latch, securing the clip into place.} {vplay Combat/loadClip.ogg}
     #action {You unclip a latch on %* and draw %*.} {vplay Combat/draw.ogg}
     #action {You slide %* inside %* and lock it into place.} {vplay Combat/holster.ogg}
     #action {You pull the hammer back on %* revolver and spin the cylinder.} {vplay Combat/spin.ogg}
-    #action {%1 aims %2 at %3, and fires %4 shot%*} {#line gag}
+    #gag {%1 aims %2 at %3, and fires %4 shot%*}
     #action {You aim at %1 with %2, and fire %3!} {vplay Combat/aim.ogg}
 
 #class {groundWeapons} close
@@ -25,7 +25,7 @@
 #class {groundCombat} open
 
     #action {Your shot goes wide!}{
-        vplay Combat/Miss.ogg;
+        vplay Combat/miss.ogg;
         #showme {missed!};
         #line gag
     }

@@ -1,8 +1,8 @@
 # class {shipPower} open
 
-    #action {The hum of the starship's engine goes quiet as the ship powers down, and the minimal life support generator hums to life.} {vplay Ship/Misc/poweroff.ogg}
-    #action {n engine roars to life as %* powers up.} {vplay Ship/Misc/otherOn.ogg}
-    #action {The * falls silent as it powers down.} {vplay Ship/Misc/otherOff.ogg}
+    #action {The hum of the starship's engine goes quiet as the ship powers down, and the minimal life support generator hums to life.} {vplay Ship/Misc/powerOff.ogg}
+    #action {An engine roars to life as %* powers up.} {vplay Ship/Misc/otherOn.ogg}
+    #action {The %* falls silent as it powers down.} {vplay Ship/Misc/otherOff.ogg}
     #action {You hear a low hum as the starship powers up, and the minimal life support generator shuts down.} {vplay Ship/Misc/powerOn.ogg}
     #action {%* push%* a button on the keyboard.} {vplay Ship/Misc/button.ogg}
 
