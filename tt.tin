@@ -105,9 +105,9 @@
 }
 
 #NOP Maths and sound aliases
-#alias {play %0.%1}
+#alias {play %1.%2}
 {
-#system play -v $vol games/sounds/"%0.%1" -q 2>/dev/null &;
+#system play -v $vol games/sounds/"%1.%2" -q 2>/dev/null &;
 }
 #alias {{vol|volume} %1}
 {
