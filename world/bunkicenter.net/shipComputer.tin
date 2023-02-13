@@ -42,7 +42,7 @@
         #showme {%1};
         #line gag
     } {3}
-    #action {^Artifacts: %*$} {vplay ShipComputer/artifact.ogg}
+    #action {^Artifacts: %*$} {vplay Ship/Computer/artifact.ogg}
     #action {^Asteroids: %*$} {vplay Ship/Computer/asteroid.ogg}
 
 #class {alerts} close
