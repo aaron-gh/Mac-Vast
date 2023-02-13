@@ -29,3 +29,18 @@
     }
 
 #class {shipStatus} close
+
+#CLASS {ALERTS} OPEn
+
+    #action {The computer announces, "%1 {has|have} been detected in the sector."} {
+        #foreach {artifact;asteroid} {type} {
+            #if {"%1" =="%*$type%*"} {
+                vplay Ship/Computer/$type.ogg
+            }
+        };
+        vplay Ship/Computer/announce.ogg;
+        #showme {%1};
+        #line gag
+    } {3}
+
+#class {alerts} close
