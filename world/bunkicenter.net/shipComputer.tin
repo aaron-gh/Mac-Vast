@@ -32,7 +32,7 @@
 
 #CLASS {ALERTS} OPEn
 
-    #action {The computer announces, "%1 {has|have} been detected in the sector."} {
+    #action {^The computer announces, "%1 {has|have} been detected in the sector."$} {
         #foreach {artifact;asteroid} {type} {
             #if {"%1" =="%*$type%*"} {
                 vplay Ship/Computer/$type.ogg
@@ -42,5 +42,7 @@
         #showme {%1};
         #line gag
     } {3}
+    #action {^Artifacts: %*$} {vplay ShipComputer/artifact.ogg}
+    #action {^Asteroids: %*$} {vplay Ship/Computer/asteroid.ogg}
 
 #class {alerts} close
