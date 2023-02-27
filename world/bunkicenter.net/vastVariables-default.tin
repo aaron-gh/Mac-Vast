@@ -2,5 +2,6 @@
 
 #VARIABLE {devMode} {0}
 #VARIABLE {rtime} {1}
+#VARIABLE {cmode} {0}
 
 #CLASS {vastVariables} CLOSE

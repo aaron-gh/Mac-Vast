@@ -20,6 +20,16 @@
                 #var {rtime} {1};
                 #showme {Round time sound set to: True.}
             }
+        };
+        #if {"%0" =="combat"} {
+            #if {$cmode==1} {
+                #var {cmode} {0};
+                #showme {Combat mode set to: false.}
+            };
+            #else {
+                #var {cmode} {1};
+                #showme {Combat mode set to: true.}
+            }
         }
     }
 
