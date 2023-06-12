@@ -64,6 +64,6 @@
     #class vastVariables write games/world/$worldurl/vastVariables.tin
 }
 
-#VARIABLE {version} {2023.02.13}
+#VARIABLE {version} {2023-06-12}
 
 #CLASS {$worldurl} CLOSE
