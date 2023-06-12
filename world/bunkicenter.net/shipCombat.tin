@@ -110,7 +110,7 @@
         #line gag
     }
     #action {You hear sounds outside the starship as it's repaired by the spaceport personnel.} {
-        vplay Ship/Combat/repairSpaceboat.ogg;
+        vplay Ship/Combat/repair.ogg;
         #line gag
     }
     #action {You tap a button on the keyboard, initializing a reload of the %*.} {
